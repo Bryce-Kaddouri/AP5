@@ -1,15 +1,21 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-  <head>
-    <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
-  </head>
-  <body>
-    <div id="page">
-      <div id="entete">
-        <img src="./images/logo.jpg" id="logoGSB" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
-        <h1>Suivi du remboursement des frais</h1>
+
+<head>
+  <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+</head>
+
+<body class="m-0 p-0">
+  <div id="page">
+    <div id="entete" class="bg-nav w-full h-32 shadow-md">
+      <div class="h-2">
+        <img src="./images/logo.jpg" id="logoGSB" class="m-2 h-28 shadow-lg" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
+
       </div>
+      <h1 class="text-white font-semibold text-4xl mt-5 text-center">Suivi du remboursement des frais</h1>
+
+    </div>
