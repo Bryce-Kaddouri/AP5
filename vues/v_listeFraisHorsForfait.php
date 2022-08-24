@@ -1,4 +1,4 @@
-﻿<table class="">
+﻿<table>
   <caption class="w-full text-xl font-semibold ml-0">Descriptif des éléments hors forfait
   </caption>
   <tr>
@@ -28,7 +28,7 @@
   ?>
 
 </table>
-<div class=" mt-8">
+<div class="mt-8">
 
   <form action="index.php?uc=gererFrais&action=validerCreationFrais" method="post">
     <div class="border-solid border-2 border-black">
@@ -45,7 +45,7 @@
           <input type="text" class="w-1/5 rounded border-input" id="txtLibelleHF" name="libelle" size="70" maxlength="256" value="" />
         </div>
         <div class="w-full bg-red d-flex flex m-3">
-          <label for="txtMontantHF" class="ml-24 w-1/4 text-regular text-l">Montant : </label>
+          <label for="txtMontantHF" class="ml-24 w-1/4 text-regular text-l">Montant </label>
           <input type="text" class="w-1/5 rounded border-input" id="txtMontantHF" name="montant" size="10" maxlength="10" value="" />
         </div>
       </fieldset>

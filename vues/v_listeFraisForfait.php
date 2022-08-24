@@ -17,7 +17,7 @@
             $quantite = $unFrais['quantite'];
           ?>
 
-            <div class="w-full bg-red d-flex flex m-3">
+            <div class="w-full d-flex flex m-3">
               <label class="ml-24 w-1/4 text-regular text-l" for="idFrais"><?php echo $libelle ?></label>
               <input type="text" class="w-1/5 rounded border-input" id="idFrais" name="lesFrais[<?php echo $idFrais ?>]" size="10" maxlength="5" value="<?php echo $quantite ?>">
             </div>

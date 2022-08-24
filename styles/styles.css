@@ -3,6 +3,7 @@
 
   position: absolute;
   position: fixed;
+  /* z-index: 50; */
   /* Set the navbar to fixed position */
   top: 0;
   left: 0px;
@@ -12,6 +13,7 @@
 .bg-blanc1 {
   background-color: #EFF5FB;
 }
+
 
 .bg-blue1 {
   background-color: #E9F1FE;
