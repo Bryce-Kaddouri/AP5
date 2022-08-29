@@ -7,11 +7,6 @@ $idVisiteur = $_SESSION['idVisiteur'];
 
 $action = $_REQUEST['action'];
 $mois = getMois(date("d/m/Y"));
-error_log("******************" . $mois);
-
-echo "***************";
-echo $mois;
-echo "***************";
 
 $numAnnee = substr($mois, 0, 4);
 $numMois = substr($mois, 4, 2);

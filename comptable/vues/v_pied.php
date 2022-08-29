@@ -5,29 +5,9 @@
     transform: rotate(-180deg);
   }
 </style>
-<script>
-  $(document).ready(function() {
-
-    $('#btn-menu').click(function() {
-      $(".infoUser").toggle(
-        function() {
-          $(".infoUser").addClass('d-none')
-          $("#sidebar").addClass('w-18')
-          // $('#btn-menuSVG').addClass('rotate180')
-          $('#btn-menuSVG').css('transform', 'rotate(180deg)')
-
-        },
-        function() {
-          $(".infoUser").removeClass('d-none')
-          $("#sidebar").removeClass('w-64')
-          $('#btn-menuSVG').addClass('rotate180')
-          console.log('test retour')
-
-        }
-      );
-    })
-  });
-</script>
+<!-- import cdn sweetAlert-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../comptable/js/script.js"></script>
 </body>
 
 </html>

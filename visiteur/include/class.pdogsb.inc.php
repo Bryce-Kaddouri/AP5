@@ -16,10 +16,14 @@
  */
 
 class PdoGsb{   		
-      	private static $serveur='mysql:host=localhost';
-      	private static $bdd='dbname=gsb_frais';   		
-      	private static $user='root' ;    		
-      	private static $mdp='' ;	
+	private static $serveur = 'mysql:host=localhost';
+	// private static $serveur = 'mysql:host=172.18.156.100';
+	private static $bdd = 'dbname=gsb_frais';
+	// private static $bdd = 'dbname=ap5_BDMEDOCLAB3';
+	private static $user = 'root';
+	// private static $user = 'gsb_dbuser3';
+	private static $mdp = '';
+	// private static $mdp = '239xc_w13';
 		private static $monPdo;
 		private static $monPdoGsb=null;
 /**
@@ -298,4 +302,3 @@ class PdoGsb{
 		PdoGsb::$monPdo->exec($req);
 	}
 }
-?>

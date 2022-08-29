@@ -21,29 +21,18 @@ switch ($action) {
             break;
         }
     case 'afficherEtat': {
+            $lesVisiteurs = $pdo->afficherListeVisiteur();
+            $lesMois = $pdo->afficherLesMois();
+            include("vues/v_listeMoisVisiteur.php");
             $leMois = $_REQUEST['lstMois'];
             $leVisiteur = $_REQUEST['lstVisiteur'];
+            $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
+            $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+            $lesinfosForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
 
-            // $ficheEtat = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
-            // include("../vues/v_listeMoisVisiteur.php");
+            $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
 
-            // break;
-        }
-    case 'voirEtatFrais': {
-            // $leMois = $_REQUEST['lstMois'];
-            // $lesMois = $pdo->getLesMoisDisponibles($idComptable);
-            // $moisASelectionner = $leMois;
-            // include("vues/v_listeMois.php");
-            // $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idComptable, $leMois);
-            // $lesFraisForfait = $pdo->getLesFraisForfait($idComptable, $leMois);
-            // $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idComptable, $leMois);
-            // $numAnnee = substr($leMois, 0, 4);
-            // $numMois = substr($leMois, 4, 2);
-            // $libEtat = $lesInfosFicheFrais['libEtat'];
-            // $montantValide = $lesInfosFicheFrais['montantValide'];
-            // $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
-            // $dateModif =  $lesInfosFicheFrais['dateModif'];
-            // $dateModif =  dateAnglaisVersFrancais($dateModif);
-            // include("vues/v_etatFrais.php");
+            include("vues/v_ficheEtat.php");
+            break;
         }
 }

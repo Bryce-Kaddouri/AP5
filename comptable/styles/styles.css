@@ -3,7 +3,7 @@
 
   position: absolute;
   position: fixed;
-  /* z-index: 50; */
+  z-index: 10;
   /* Set the navbar to fixed position */
   top: 0;
   left: 0px;
@@ -12,6 +12,10 @@
 
 .bg-blanc1 {
   background-color: #EFF5FB;
+}
+
+.bg-blanc2 {
+  background-color: #FBFAFA;
 }
 
 
@@ -27,6 +31,14 @@
   background-color: #77AADD;
 }
 
+.text-blue1 {
+  color: #144DA1;
+}
+
+.text-blue2 {
+  color: #4E81B6
+}
+
 .d-none {
   display: none;
 }
@@ -40,8 +52,9 @@
 }
 
 .textOnBorder {
-  position: absolute;
+  position: relative;
   margin-top: -15px;
+  width: 300px;
 }
 
 .border-input {

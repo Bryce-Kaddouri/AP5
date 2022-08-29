@@ -21,8 +21,8 @@ switch ($uc) {
 			include("controleurs/c_validerFrais.php");
 			break;
 		}
-	case 'etatFrais': { /*avant : gererFrais*/
-			include("controleurs/c_etatFrais.php");
+	case 'suivrePaiement': { /*avant : gererFrais*/
+			include("controleurs/c_suivrePaiement.php");
 			break;
 		}
 }

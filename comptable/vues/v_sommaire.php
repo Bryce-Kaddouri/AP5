@@ -14,7 +14,7 @@
 
                 <li id="user" class=" text-white font-regular text-xl mb-20 infoUser">
                    Comptable :<br>
-                   <span class="text-white font-semibold underline text-2xl ">
+                   <span class="text-white font-semibold  text-2xl hover:underline cursor-pointer">
                       <?php echo $_SESSION['prenom'] . "  " . $_SESSION['nom'] ?>
                    </span>
                 </li>
@@ -30,13 +30,13 @@
                    </a>
                 </li>
                 <li>
-                   <a href="index.php?uc=etatFrais&action=selectionnerMois" title="Consultation de mes fiches de frais" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-10 h-10 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                   <a href="index.php?uc=suivrePaiement&action=afficherListeFicheVA" title="Consultation de mes fiches de frais" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
+                      <svg xmlns="http://www.w3.org/2000/svg" class=" flex-shrink-0 w-10 h-10 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                       </svg>
 
 
-                      <span class="ml-3 text-white text-xl infoUser">Suivre fiche de frais</span>
+                      <span class="ml-3 text-white text-xl infoUser hover:text-black">Suivre paiement fiche de frais</span>
                    </a>
                 </li>
                 <li>
