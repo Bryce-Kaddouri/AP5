@@ -40,7 +40,7 @@
                             <tr>
                                 <th class="pt-2 pb-2 text-xl">Frais forfaitaires</th>
                                 <th class="pt-2 pb-2 text-xl">Quantité</th>
-                                <th class="pt-2 pb-2 text-xl">Miontant Unitaire </th>
+                                <th class="pt-2 pb-2 text-xl">Montant Unitaire </th>
                                 <th class="pt-2 pb-2 text-xl">Total</th>
                             </tr>
                         </thead>
@@ -71,27 +71,56 @@
 
                     <p class="ml-2 text-xl font-semibold text-center mt-10 mb-5">Autre frais</p>
 
-                    <table class="w-full  border-solid border-2 border-grey-900 mt-10 ">
-                        <thead class="bg-blue-table">
+                    <table class="w-full   mt-10 ">
+                        <thead class="bg-blue-table border-solid border-2 border-grey-900">
                             <tr>
                                 <th class="w-1/20 d-none deleteAction"></th>
                                 <th class="pt-2 pb-2 w-1/4 text-xl">Date</th>
                                 <th class="pt-2 w-2/4 pb-2 text-xl">Libellé</th>
-                                <th class="pt-2 w-1/4 pb-2 text-xl"><?php  ?></th>
+                                <th class="pt-2 w-2/4 pb-2 text-xl">Montant</th>
+                                <th class="pt-2 w-1/4 pb-2 text-xl">Justificatif</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($lesinfosHorsForfait as $infoHF) {
+                            <?php
+                            if (!is_array($lesinfosHorsForfait)) {
                                 echo '<tr>
-                        <td  class="w-1/20 pb-1 pt-1 text-center d-none deleteAction"><button dt-idFrais="' . $infoHF['id'] . '" dt-idVisiteur="' . $infoHF['idVisiteur'] . '" class="bg-red-700 w-8 h-8 hover:bg-red-800 rounded-full btn-suppr">
-                                <div class="bg-white h-2 w-5 m-auto"></div>
-                            </button> </td>
-                        <td class="border-solid border-2 border-black bg-white">' . $infoHF['date'] . '</td>
-                        <td class="border-solid border-2 border-black bg-white">' . $infoHF['libelle'] . '</td>
-                        <td class="border-solid border-2 border-black bg-white">' . $infoHF['montant'] . ' EUR</td>
-                    </tr>';
+                                        <td class="bg-trasparent"></td>
+                                        <td class="bg-trasparent"></td>
+                                        <td class="bg-trasparent">Aucun Frais Hors Forfait</td>
+                                        <td class="bg-trasparent"></td>
+                                        <td class="bg-trasparent"></td>
+                                    </tr>';
+                            } else {
+                                foreach ($lesinfosHorsForfait as $infoHF) {
+                                    if ($infoHF['justificatif'] == "0") {
+                                        $justificatifString = 'Non';
+                                    } else if ($infoHF['justificatif'] == "1") {
+                                        $justificatifString = 'Oui';
+                                    } else {
+                                        $justificatifString = 'Erreur';
+                                    }
+                                    echo '<tr>
+                            <td  class="w-1/20 pb-1 pt-1 text-center d-none deleteAction"><button dt-idFrais="' . $infoHF['id'] . '" dt-idVisiteur="' . $infoHF['idVisiteur'] . '" class="bg-red-700 w-8 h-8 hover:bg-red-800 rounded-full btn-suppr">
+                                    <div class="bg-white h-2 w-5 m-auto"></div>
+                                </button> </td>
+                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['date'] . '</td>
+                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['libelle'] . '</td>
+                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['montant'] . ' EUR</td>
+                            <td class="border-solid border-2 border-black bg-white">' . $justificatifString . '</td>
+    
+                        </tr>';
+                                }
                             }
+
                             ?>
+                            <tr>
+                                <td class="bg-trasparent"></td>
+                                <td></td>
+                                <td></td>
+                                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisForfait['totalFraisForfait']; ?> EUR</td>
+
+                            </tr>
 
                         </tbody>
 
