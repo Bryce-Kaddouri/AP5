@@ -2,11 +2,15 @@
 include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
 $idComptable = $_SESSION['idVisiteur'];
-
-
 switch ($action) {
+    case 'selectionnerMois': {
+            $lesMois = $pdo->afficherLesMois();
+            include 'vues/v_listeMois.php';
+            break;
+        }
     case 'afficherListeFicheVA': {
-            include("vues/v_filterPaiement.php");
+            $lesMois = $pdo->afficherLesMois();
+            include 'vues/v_listeMois.php';
             $today = explode(' ', date("Y-m-d"))[0];
             $todayExplode = explode("-", $today);
             $todayYear = $todayExplode[0];

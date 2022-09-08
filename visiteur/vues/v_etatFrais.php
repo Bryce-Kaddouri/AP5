@@ -32,27 +32,38 @@
         ?>
       </tr>
     </table>
+
+
     <div class="mt-5 mb-10">
-      <p>Descriptif des éléments hors forfait : ?????????????????
-        <br> justificatifs reçus : <?php echo $nbJustificatifs ?>
-        <!-- count doc justificatif -->
+
+
+      <br> justificatifs reçus : <?php echo $nbJustificatifs ?>
+      <!-- count doc justificatif -->
       </p>
     </div>
     <table class="w-full">
+
       <tr>
         <th class="w-1/4 pb-2 pt-2 bg-blue-table border-solid border-2 border-black">Date</th>
         <th class="w-1/4 bg-blue-table border-solid border-2 border-black">Libellé</th>
+        <th class="w-1/4 bg-blue-table border-solid border-2 border-black">Justificatif</th>
         <th class='w-1/4  bg-blue-table border-solid border-2 border-black'>Montant</th>
       </tr>
       <?php
       foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
         $date = $unFraisHorsForfait['date'];
         $libelle = $unFraisHorsForfait['libelle'];
+        if ($unFraisHorsForfait['justificatif'] == 0) {
+          $justificatif = "Non";
+        } else {
+          $justificatif = "Oui";
+        }
         $montant = $unFraisHorsForfait['montant'];
       ?>
         <tr>
           <td class="border-solid border-2 border-black text-xl text-center"><?php echo $date ?></td>
           <td class="border-solid border-2 border-black text-xl text-center"><?php echo $libelle ?></td>
+          <td class="border-solid  border-2 border-black text-xl text-center"><?php echo $justificatif ?></td>
           <td class="border-solid border-2 border-black text-xl text-center"><?php echo $montant ?></td>
         </tr>
       <?php

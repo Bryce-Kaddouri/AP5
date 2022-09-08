@@ -1,11 +1,9 @@
 ﻿<table>
-  <caption class="w-full text-xl font-semibold ml-0">Descriptif des éléments hors forfait
-  </caption>
   <tr>
     <th class="action">&nbsp;</th>
     <th class="date w-1/4 bg-blue-table border-solid border-2 border-grey-900">Date</th>
-    <th class="libelle w-2/4 bg-blue-table">Libellé</th>
-    <th class="montant w-1/4 bg-blue-table">Montant</th>
+    <th class="libelle w-2/4 bg-blue-table border-solid border-2 border-grey-900">Libellé</th>
+    <th class="montant w-1/4 bg-blue-table border-solid border-2 border-grey-900">Montant</th>
 
   </tr>
 
@@ -17,15 +15,23 @@
     $id = $unFraisHorsForfait['id'];
   ?>
     <tr>
-      <td><a href="index.php?uc=gererFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');">Supprimer ce frais</a></td>
-      <td> <?php echo $date ?></td>
-      <td><?php echo $libelle ?></td>
-      <td><?php echo $montant ?></td>
+      <td class="w-1/20 pb-2 pt-2 text-center deleteAction"><button dt-idVisiteur="<?php echo $id ?>" class="bg-red-700 w-8 h-8 hover:bg-red-800 rounded-full btn-suppr">
+          <div class="bg-white h-1 w-4 m-auto"></div>
+        </button> </td>
+      <td class="border-solid border-2 border-black-900 pl-5"> <?php echo $date ?> </td>
+      <td class="border-solid border-2 border-black-900 pl-5"><?php echo $libelle ?> </td>
+      <td class="border-solid border-2 border-black-900 pl-5"><?php echo $montant ?> EUR</td>
     </tr>
   <?php
 
   }
   ?>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="border-solid border-2 border-black-900 pl-5 h-8 pb-2 pt-2 font-bold"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait']; ?> EUR</td>
+  </tr>
 
 </table>
 <div class="mt-8">
@@ -38,15 +44,28 @@
         </legend>
         <div class="w-full bg-red d-flex flex m-3">
           <label class="ml-24 w-1/4 text-regular text-l" for="txtDateHF">Date (jj/mm/aaaa):</label>
-          <input type="text" class="w-1/5 rounded border-input" id="txtDateHF" name="dateFrais" size="10" maxlength="10" value="">
+          <input type="date" class="w-1/5 rounded border-input" id="txtDateHF" name="dateFrais" size="10" maxlength="10" value="" required>
         </div>
         <div class="w-full bg-red d-flex flex m-3">
           <label class="ml-24 w-1/4 text-regular text-l" for="txtLibelleHF">Libellé</label>
-          <input type="text" class="w-1/5 rounded border-input" id="txtLibelleHF" name="libelle" size="70" maxlength="256" value="" />
+          <input type="text" class="w-1/5 rounded border-input" id="txtLibelleHF" name="libelle" size="70" maxlength="256" value="" required />
+        </div>
+        <div class="w-full bg-red d-flex flex m-3">
+          <label class="ml-24 w-1/4 text-regular text-l" for="txtLibelleHF">Justificatif</label>
+          <div class="flex d-flex gap-14">
+            <div>
+              <input type="radio" id="justificatif" name="justificatif" value="1" required>
+              <label for="oui">Oui</label>
+            </div>
+            <div>
+              <input type="radio" id="non" name="justificatif" value="0" required>
+              <label for="non">Non</label>
+            </div>
+          </div>
         </div>
         <div class="w-full bg-red d-flex flex m-3">
           <label for="txtMontantHF" class="ml-24 w-1/4 text-regular text-l">Montant </label>
-          <input type="text" class="w-1/5 rounded border-input" id="txtMontantHF" name="montant" size="10" maxlength="10" value="" />
+          <input type="number" min="0.00" max="10000.00" step="0.01" class="w-1/5 rounded border-input" id="txtMontantHF" name="montant" size="10" maxlength="10" value="" required />
         </div>
       </fieldset>
     </div>

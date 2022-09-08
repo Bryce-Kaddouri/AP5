@@ -2,8 +2,6 @@
   <div class="pt-2 mr-2 ml-2">
     <h2 class="w-auto h-12  bg-blue1 shadow-lg border-blue1 font-semibold text-3xl text-center  ">Renseigner ma fiche de frais du mois <?php echo $numMois . "-" . $numAnnee ?></h2>
 
-
-
     <form method="POST" action="index.php?uc=gererFrais&action=validerMajFraisForfait" class="mt-12">
       <div class="border-solid border-2 border-black">
 

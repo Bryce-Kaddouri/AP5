@@ -6,8 +6,11 @@ include("vues/v_sommaire.php");
 $idVisiteur = $_SESSION['idVisiteur'];
 
 $action = $_REQUEST['action'];
-$mois = getMois(date("d/m/Y"));
-
+$today = explode(' ', date("Y-m-d"))[0];
+$todayExplode = explode("-", $today);
+$todayYear = $todayExplode[0];
+$todayMonth = $todayExplode[1];
+$mois = $todayYear . $todayMonth;
 $numAnnee = substr($mois, 0, 4);
 $numMois = substr($mois, 4, 2);
 switch ($action) {
@@ -31,11 +34,13 @@ switch ($action) {
 			$dateFrais = $_REQUEST['dateFrais'];
 			$libelle = $_REQUEST['libelle'];
 			$montant = $_REQUEST['montant'];
-			valideInfosFrais($dateFrais, $libelle, $montant);
+			$justificatif = $_REQUEST['justificatif'];
+			valideInfosFrais($dateFrais, $libelle, $montant, $justificatif);
 			if (nbErreurs() != 0) {
 				include("vues/v_erreurs.php");
 			} else {
-				$pdo->creeNouveauFraisHorsForfait($idVisiteur, $mois, $libelle, $dateFrais, $montant);
+				echo "<script> alert('" . $justificatif . "');</script>";
+				$pdo->creeNouveauFraisHorsForfait($idVisiteur, $mois, $libelle, $dateFrais, $montant, $justificatif);
 			}
 			break;
 		}
@@ -45,7 +50,8 @@ switch ($action) {
 			break;
 		}
 }
-$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $mois);
 $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $mois);
+$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $mois);
+$totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($idVisiteur, $mois);
 include("vues/v_listeFraisForfait.php");
 include("vues/v_listeFraisHorsForfait.php");

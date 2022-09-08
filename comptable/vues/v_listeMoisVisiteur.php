@@ -25,14 +25,12 @@
            </div>
            <div class="w-1/2 mt-5 mb-5">
              <label for="lstMois" class="ml-24 w-1/4 text-regular text-l" accesskey="n">Mois : </label>
-             <select class="w-auto rounded border-input " id="lstMois" name="lstMois">
+             <select class="w-auto rounded border-input" id="lstMois" name="lstMois">
                <option value="">-- Saisir un mois --</option>
                <?php
                 foreach ($lesMois as $unMois) {
                   $mois = $unMois['unMois'];
                   echo "<option value='" . $mois . "'>" . $mois . "</option>";
-                  // $numAnnee =  $unMois['numAnnee'];
-                  // $numMois =  $unMois['numMois'];
                 }
                 ?>
              </select>

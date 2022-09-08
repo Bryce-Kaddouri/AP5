@@ -20,10 +20,15 @@
                         <input class="pl-5 pr-5 pb-2 pt-2 bg-blue-600 rounded font-semibold text-white cursor-pointer hover:bg-blue-400" type="submit" value="Connexion" name="valider">
                         <!-- <input type="reset" value="Annuler" name="annuler"> -->
                   </div>
+                  <div class="w-full pb-5 text-center" style="background-color: #283044;">
+                        <a href="../index.html" class="text-blue-600 hover:text-blue-400">Retourner à la page d'accueil</a>
+                  </div>
+
 
 
 
             </form>
+
 
       </div>
       <div class="w-1/2 m-auto">
