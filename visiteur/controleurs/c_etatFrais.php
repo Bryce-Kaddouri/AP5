@@ -17,12 +17,14 @@ switch ($action) {
 			break;
 		}
 	case 'voirEtatFrais': {
+			// liste des mois 
 			$leMois = $_REQUEST['lstMois'];
 			$lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
 			$moisASelectionner = $leMois;
 			include("vues/v_listeMois.php");
-			$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
-			$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
+			// fin liste des mois 
+
+			// récupération infos fiche de frais
 			$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
 			$numAnnee = substr($leMois, 0, 4);
 			$numMois = substr($leMois, 4, 2);
@@ -31,6 +33,19 @@ switch ($action) {
 			$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
 			$dateModif =  $lesInfosFicheFrais['dateModif'];
 			$dateModif =  dateAnglaisVersFrancais($dateModif);
+			// fin récupération infos fiche de frais 
+
+			// récupération infos frais forfait
+			$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
+			// fin récupération infos frais forfait
+
+			// récupération infos frais hors forfait
+			$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
+			// fin récupération infos frais hors forfait
+
+			// inclusion vue état frais
 			include("vues/v_etatFrais.php");
+			// fin inclusion vue état frais
+			break;
 		}
 }

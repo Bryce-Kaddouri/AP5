@@ -1,0 +1,28 @@
+.hero-body {
+    text-align: center;
+    background-color: rgb(53, 53, 97);
+
+    background-repeat: no-repeat;
+    background-image: url(../images/logo.jpg);
+    background-position: bottom 0.3rem left 1rem;
+
+
+}
+
+
+
+.titlemention {
+    position: relative;
+    top: 1rem;
+    font-weight: 600;
+    font-size: 35px;
+
+}
+
+.container.un {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 1rem;
+    float: left;
+}
