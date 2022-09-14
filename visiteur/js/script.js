@@ -56,4 +56,22 @@ $(document).ready(function () {
         })
     });
 
+
+    // fonction qui permt de récupérer l'url de la page et de retourner un titre en fonction de l'url
+    function getTitrePage(url) {
+        if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=deconnexion') {
+            return 'Authentification - GSB';
+        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=valideConnexion") {
+            return 'Accueil Visiteur - GSB';
+        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=selectionnerMois" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=voirEtatFrais") {
+            return 'Consulter mes fiches de frais - GSB';
+        }
+        else if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=saisirFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerMajFraisForfait' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerCreationFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=supprimerFrais') {
+            return 'Saisir les frais - GSB';
+        }
+    }
+    // fonction qui permet de changer le titre de la page en fonction de la page ou on se trouve
+    $("#titrePage").html(getTitrePage(window.location.href));
+    console.log(getTitrePage(window.location.href))
+
 });

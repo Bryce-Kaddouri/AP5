@@ -69,6 +69,12 @@ $(document).ready(function () {
     });
 
 
+    // fonction valider fiche : 
+    $('.validerFiche').on('click', function () {
+        alert('test')
+    });
+
+
     // fonction valider fiche de frais pour un visiteur 
     $('.btn-suppr').on('click', function () {
         const idFrais = $(this).attr('dt-idFrais');
@@ -103,5 +109,8 @@ $(document).ready(function () {
             }
         })
     });
+
+
+
 
 });

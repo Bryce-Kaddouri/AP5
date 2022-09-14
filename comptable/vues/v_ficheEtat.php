@@ -83,16 +83,14 @@
                         </thead>
                         <tbody>
                             <?php
-                            if (!is_array($lesinfosHorsForfait)) {
-                                echo '<tr>
-                                        <td class="bg-trasparent"></td>
-                                        <td class="bg-trasparent"></td>
-                                        <td class="bg-trasparent">Aucun Frais Hors Forfait</td>
-                                        <td class="bg-trasparent"></td>
-                                        <td class="bg-trasparent"></td>
+                            if (count($lesinfosHorsForfait) <= 0) {
+                                echo '<tr class="">
+                                <td class="bg-white w-full font-bold text-l ">Aucun Frais Hors Forfait</td>
+                                        
                                     </tr>';
                             } else {
                                 foreach ($lesinfosHorsForfait as $infoHF) {
+                                    echo "<script>console.log(" . $lesinfosHorsForfait . "</script>";
                                     if ($infoHF['justificatif'] == "0") {
                                         $justificatifString = 'Non';
                                     } else if ($infoHF['justificatif'] == "1") {
@@ -111,26 +109,19 @@
     
                         </tr>';
                                 }
+                                echo '
+                                <tr>
+                                    <td class="bg-trasparent"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="border-solid border-2 border-black bg-white">' . $totalFraisForfait['totalFraisForfait'] . ' EUR</td>
+                                </tr>';
                             }
-
                             ?>
-                            <tr>
-                                <td class="bg-trasparent"></td>
-                                <td></td>
-                                <td></td>
-                                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisForfait['totalFraisForfait']; ?> EUR</td>
-
-                            </tr>
-
                         </tbody>
-
-
                     </table>
                     <div class=" w-auto bg-red ml-72 block d-block mb-32">
                         <p class="text-xl w-full  font-semibold mt-6 mb-2 text-blue1">Signature</p>
-
-
-
                     </div>
                     <hr class="w-1/3">
                     <div class="d-block block mb-5 mt-5">
@@ -160,19 +151,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="borderButtonValidation d-relative  w-auto mt-5 h-auto pb-5 ml-20 mr-20">
             <p class="w-auto  ">
                 <button id="supprimerLigne" class="pl-5 pr-5 pb-1 pt-1  bg-red-600 text-white text-l font-regular rounded hover:bg-red-700 cursor-pointer" type="submit" size="20">Supprimer une ligne</button>
                 <button id="attenteLigneFiche" class="pl-5 pr-5 pb-1 pt-1  bg-blue-600 text-white text-l font-regular rounded hover:bg-blue-700 cursor-pointer" id="annuler" type="reset" value="Effacer" size="20">Mettre en attente</button>
-                <button dt-idmoisFiche="<?php echo $infosFiche['mois'] ?>" dt-idVisiteur="<?php echo $infosFiche['idVisiteur'] ?>" id="validerFiche" class="pl-5 pr-5 pb-1 pt-1  bg-green-600 text-white text-l font-regular rounded hover:bg-green-700 cursor-pointer" size="20">Valider la fiche</button>
+                <button dt-idmoisFiche="<?php echo $infosFiche['mois'] ?>" dt-idVisiteur="<?php echo $infosFiche['idVisiteur'] ?>" id="validerFiche" class="validerFiche pl-5 pr-5 pb-1 pt-1  bg-green-600 text-white text-l font-regular rounded hover:bg-green-700 cursor-pointer" size="20">Valider la fiche</button>
             </p>
         </div>
     </div>
-
-
-
     </form>
 </div>

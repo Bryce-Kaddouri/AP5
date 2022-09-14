@@ -18,25 +18,39 @@ switch ($action) {
             break;
         }
     case 'afficherEtat': {
-            $lesVisiteurs = $pdo->afficherListeVisiteur();
-            $lesMois = $pdo->afficherLesMois();
-            include("vues/v_listeMoisVisiteur.php");
-            $leMois = $_REQUEST['lstMois'];
-            $leVisiteur = $_REQUEST['lstVisiteur'];
-            $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
-            $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
-            $numMois = substr($infosFiche['mois'], 4, 2);
-            $numAnnee = substr($infosFiche['mois'], 0, 4);
-            $moisString = $pdo->convertirNumMoisString($numMois);
-            // $moisConvertiString = $pdo->convertirMoisDateComplete($leMois);
-            $lesinfosForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
+            if (!empty($_POST['lstVisiteur']) && !empty($_POST['lstMois'])) {
+                $lesVisiteurs = $pdo->afficherListeVisiteur();
+                $lesMois = $pdo->afficherLesMois();
+                include("vues/v_listeMoisVisiteur.php");
+                $leMois = $_REQUEST['lstMois'];
+                $leVisiteur = $_REQUEST['lstVisiteur'];
 
 
-            $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
-            $totalFraisForfait = $pdo->getTotalFraisForfait($leVisiteur, $leMois);
+                $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
+                $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+                if (is_array($infosFiche)) {
+                    $numMois = substr($infosFiche['mois'], 4, 2);
+                    $numAnnee = substr($infosFiche['mois'], 0, 4);
+                    $moisString = $pdo->convertirNumMoisString($numMois);
+                    // $moisConvertiString = $pdo->convertirMoisDateComplete($leMois);
+                    $lesinfosForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
+                    $totalFraisForfait = $pdo->getTotalFraisForfait($leVisiteur, $leMois);
 
-            include("vues/v_ficheEtat.php");
-            break;
+
+                    $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
+
+
+                    include("vues/v_ficheEtat.php");
+                } else {
+                    ajouterErreur("Pas de fiche de frais pour ce visiteur ce mois");
+                    include("vues/v_erreurs.php");
+                }
+
+                break;
+            } else {
+                ajouterErreur("Aucun visiteur n'a été sélectionné");
+                include("vues/v_erreurs.php");
+            }
         }
     case 'rejeterFrais': {
             $idFrais = $_REQUEST['idFrais'];
