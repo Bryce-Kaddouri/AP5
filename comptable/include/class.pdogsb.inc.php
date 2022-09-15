@@ -482,4 +482,15 @@ class PdoGsb
 
 		return $lesLignes;
 	}
+
+	function ficheFraisIdEtat()
+	{
+		$sql = "SELECT id FROM fichefrais 
+		INNER JOIN etat 
+		ON fichefrais.idEtat = etat.id WHERE idEtat = 'VA';";
+		$req = PdoGsb::$monPdo->prepare($sql);
+		$req->execute();
+		$lesidFicheFrais = $req->fetchAll();
+		return $lesidFicheFrais;
+	}
 }

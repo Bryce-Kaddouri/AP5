@@ -1,0 +1,27 @@
+{
+  "name": "ap5taillocal_v0.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryce-Kaddouri/AP5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bryce-Kaddouri/AP5/issues"
+  },
+  "homepage": "https://github.com/Bryce-Kaddouri/AP5#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "jquery": "^3.6.1",
+    "sweetalert2": "^11.4.32"
+  }
+}

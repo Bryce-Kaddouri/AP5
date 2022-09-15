@@ -2,7 +2,7 @@
    <div class="pt-2 mr-2 ml-2">
      <h2 class="w-auto h-12  bg-blue1 shadow-lg border-blue1 font-semibold text-3xl text-center  ">Valider fiche de frais</h2>
      <div class="border-solid border-2 border-black mt-12 ">
-       <h3 class="textOnBorder bg-blanc1 ml-12 pl-2 pr-2 font-semibold text-xl">Mois et Visiteurs à sélectionner : </h3>
+       <h3 class="textOnBorder bg-blanc1 ml-12 pl-2 pr-2 font-semibold text-xl">Mois et Visiteur à sélectionner </h3>
        <form action="index.php?uc=validerFrais&action=afficherEtat" method="post">
          <div class="w-full bg-red d-flex flex m-3">
            <div class="w-1/2 mt-5 mb-5">
