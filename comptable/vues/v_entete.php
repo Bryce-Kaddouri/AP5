@@ -21,6 +21,6 @@
         <img src="./images/logo.jpg" id="logoGSB" class="m-2 h-28 shadow-lg" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
 
       </div>
-      <h1 class="text-white font-semibold text-4xl mt-5 text-center"></h1>
+      <h1 id="titrePage" class="text-white font-semibold text-4xl mt-5 text-center"></h1>
 
     </div>

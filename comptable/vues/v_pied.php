@@ -6,6 +6,7 @@
 </style>
 <!-- import cdn sweetAlert-->
 <script src="../comptable/js/script.js"></script>
+<script src="../comptable/js/verifRegex.js"></script>
 </body>
 
 </html>

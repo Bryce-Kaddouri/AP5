@@ -2,21 +2,33 @@
       <div class="w-1/2 m-auto">
 
             <form class="bg-white m-16 w-4/6 h-auto mr-2/6 ml-1/6 rounded-lg shadow-lg" method="POST" action="index.php?uc=connexion&action=valideConnexion">
-                  <div class="m-10 h-20 bg-white text-center">
+                  <div class=" h-20 bg-white text-center">
                         <h2 class="text-black text-center pt-10 font-semibold text-xl">Identification Comptable</h2>
 
                   </div>
                   <div class=" h-20 ml-14 mr-10 bg-white ">
                         <label class="block d-block">Login*</label>
-                        <input class="block d-block border-solid border-2 border-grey-900 rounded" id=" login" type="text" name="login" size="30" maxlength="45" class="border-grey">
+                        <input class="block d-block border-solid border-2 border-grey-900 rounded login" id="login" type="text" name="login" size="30" maxlength="45" class="border-grey">
                   </div>
 
-                  <div class=" h-20 ml-14 mr-10 bg-white ">
+                  <div class=" h-20 pb-20 ml-14 mr-10 bg-white ">
                         <label class="block d-block" for="mdp">Mot de passe*</label>
                         <input class="block d-block border-solid border-2 border-grey-900 rounded" id="mdp" type="password" name="mdp" size="30" maxlength="45">
+                        <div id="infoMDP" class="bg-blue-800">
+                              <div class=" bg-red-800 w-full flex d-flex align-middle" id="info1maj">
+                                    <p>au moins 1 majuscule</p><img class=" h-10 w-10" src="../images/check.gif" alt="">
+                              </div>
+                              <div class="h-10 flex d-flex">
+                                    <p class="align-middle bg-white">compris entre 8 et 20 caractéres</p>
+                              </div>
+                              <div class="h-10 flex d-flex">
+                                    <p>pas de caractéres spéciaux</p>
+                              </div>
+
+                        </div>
                   </div>
 
-                  <div class=" h-20 ml-10 mr-10 bg-white mr-auto ml-auto text-center ">
+                  <div class="  h-20 ml-10 mr-10 bg-white mr-auto ml-auto text-center ">
                         <input class="pl-5 pr-5 pb-2 pt-2 bg-blue-600 rounded font-semibold text-white cursor-pointer hover:bg-blue-400" type="submit" value="Connexion" name="valider">
                         <!-- <input type="reset" value="Annuler" name="annuler"> -->
                   </div>
