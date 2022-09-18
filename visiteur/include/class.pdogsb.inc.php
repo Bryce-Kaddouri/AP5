@@ -250,7 +250,6 @@ class PdoGsb
 		// $dateFr = dateFrancaisVersAnglais($date);
 		$req = "insert into lignefraishorsforfait 
 		values(NULL,'$idVisiteur','$mois','$libelle','$date','$montant', '$justificatif')";
-		echo $req;
 		PdoGsb::$monPdo->exec($req);
 	}
 	/**

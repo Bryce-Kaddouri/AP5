@@ -37,11 +37,13 @@ $(document).ready(function () {
             }
         }
         else {
-            // remettre la couleur d'origine
+            // changer la couleur de la brdure en vert
             $(this).css('border', '2px solid green');
         }
     }
     );
+
+
 });
 
     // faire une action a chaque changement lors de la saisie de valeur de l'input avec class login

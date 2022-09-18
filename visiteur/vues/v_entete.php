@@ -11,7 +11,7 @@
 
 <body class="m-0 p-0">
   <div id="page">
-    <div id="entete" class="bg-nav w-full h-32 shadow-md">
+    <div id="entete" style="z-index: 11" class="bg-nav w-full h-32 shadow-md">
       <div class="h-2">
         <img src="./images/logo.jpg" id="logoGSB" class="m-2 h-28 shadow-lg" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
 
