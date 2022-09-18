@@ -1,4 +1,4 @@
-<div id="contenu" class="ml-72 mr-12 mt-5 bg-blanc1 shadow-lg h-full">
+<div id="contenu" class="ml-72 mr-12 mt-5 bg-blanc1 shadow-lg h-auto">
   <div class="pt-2 mr-2 ml-2">
     <h2 class="w-auto h-12  bg-blue1 shadow-lg border-blue1 font-semibold text-3xl text-center  ">Renseigner ma fiche de frais du mois <?php echo $numMois . "-" . $numAnnee ?></h2>
 
@@ -6,7 +6,7 @@
       <div class="border-solid border-2 border-black">
 
         <fieldset>
-          <legend class="textOnBorder bg-blanc1 ml-12 pl-2 pr-2 font-semibold text-xl ">Eléments forfaitisés
+          <legend style="z-index: 10" class="textOnBorder bg-blanc1 ml-12 pl-2 pr-2 font-semibold text-xl ">Eléments forfaitisés
           </legend>
           <?php
           foreach ($lesFraisForfait as $unFrais) {

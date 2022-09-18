@@ -31,16 +31,18 @@ switch ($action) {
 			break;
 		}
 	case 'validerCreationFrais': {
-			$dateFrais = $_REQUEST['dateFrais'];
+			$dateFrais = new DateTime($_REQUEST['dateFrais']);
+                        $dateFraisSaisi = $dateFrais->format("Y-m-d");
+                        $mois =  $dateFrais->format('Ym');
 			$libelle = $_REQUEST['libelle'];
 			$montant = $_REQUEST['montant'];
 			$justificatif = $_REQUEST['justificatif'];
-			valideInfosFrais($dateFrais, $libelle, $montant, $justificatif);
+                        
+			//valideInfosFrais($dateFrais, $libelle, $montant, $justificatif);
 			if (nbErreurs() != 0) {
 				include("vues/v_erreurs.php");
 			} else {
-				echo "<script> alert('" . $justificatif . "');</script>";
-				$pdo->creeNouveauFraisHorsForfait($idVisiteur, $mois, $libelle, $dateFrais, $montant, $justificatif);
+				$pdo->creeNouveauFraisHorsForfait($idVisiteur, $mois, $libelle, $dateFraisSaisi, $montant, $justificatif);
 			}
 			break;
 		}
