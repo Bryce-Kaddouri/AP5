@@ -56,6 +56,7 @@
                                         <td class="border-solid border-2 border-black bg-white">' . number_format($info['quantite'] * $info['montant'], 2, ".")  . ' EUR</td>
                                     </tr>';
                             }
+                            // 
                             ?>
 
                             <tr>
@@ -72,13 +73,15 @@
                     <p class="ml-2 text-xl font-semibold text-center mt-10 mb-5">Autre frais</p>
 
                     <table class="w-full   mt-10 ">
-                        <thead class="bg-blue-table border-solid border-2 border-grey-900">
+                        <thead class="">
                             <tr>
-                                <th class="w-1/20 d-none deleteAction"></th>
-                                <th class="pt-2 pb-2 w-1/4 text-xl">Date</th>
-                                <th class="pt-2 w-2/4 pb-2 text-xl">Libellé</th>
-                                <th class="pt-2 w-2/4 pb-2 text-xl">Montant</th>
-                                <th class="pt-2 w-1/4 pb-2 text-xl">Justificatif</th>
+                                <th class="w-1/20 
+                                 deleteAction d-none "></th>
+                                <th class="pt-2 pb-2 w-1/6 text-xl text-center bg-blue-table border-solid border-2 border-grey-900">Date</th>
+                                <th class="pt-2 w-2/4 pb-2 text-xl text-center bg-blue-table border-solid border-2 border-grey-900">Libellé</th>
+                                <th class="pt-2 w-1/4 pb-2 text-xl text-center bg-blue-table border-solid border-2 border-grey-900">Justificatif</th>
+                                <th class="pt-2 w-2/4 pb-2 text-xl text-center bg-blue-table border-solid border-2 border-grey-900">Montant</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -90,7 +93,6 @@
                                     </tr>';
                             } else {
                                 foreach ($lesinfosHorsForfait as $infoHF) {
-                                    echo "<script>console.log(" . $lesinfosHorsForfait . "</script>";
                                     if ($infoHF['justificatif'] == "0") {
                                         $justificatifString = 'Non';
                                     } else if ($infoHF['justificatif'] == "1") {
@@ -99,18 +101,19 @@
                                         $justificatifString = 'Erreur';
                                     }
                                     echo '<tr>
-                            <td  class="w-1/20 pb-1 pt-1 text-center d-none deleteAction"><button dt-idFrais="' . $infoHF['id'] . '" dt-idVisiteur="' . $infoHF['idVisiteur'] . '" class="bg-red-700 w-8 h-8 hover:bg-red-800 rounded-full btn-suppr">
+                            <td  class="w-50 pb-1 pt-1 d-none text-center deleteAction"><button dt-moisFiche="' . $infoHF['mois'] . '" dt-idFrais="' . $infoHF['id'] . '" dt-idVisiteur="' . $infoHF['idVisiteur'] . '" class="bg-red-700 w-8 h-8 hover:bg-red-800 rounded-full btn-suppr">
                                     <div class="bg-white h-2 w-5 m-auto"></div>
                                 </button> </td>
-                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['date'] . '</td>
-                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['libelle'] . '</td>
-                            <td class="border-solid border-2 border-black bg-white">' . $infoHF['montant'] . ' EUR</td>
-                            <td class="border-solid border-2 border-black bg-white">' . $justificatifString . '</td>
+                            <td class=" w-1/5 border-solid border-2 border-black bg-white">' . $infoHF['date'] . '</td>
+                            <td class="w-1/5 border-solid border-2 border-black bg-white">' . $infoHF['libelle'] . '</td>
+                            <td class="w-1/5 border-solid border-2 border-black bg-white">' . $justificatifString . '</td>
+                            <td class="w-1/5 border-solid border-2 border-black bg-white">' . $infoHF['montant'] . ' EUR</td>
     
                         </tr>';
                                 }
                                 echo '
                                 <tr>
+                                    <td class="d-none deleteAction"></td>
                                     <td class="bg-trasparent"></td>
                                     <td></td>
                                     <td></td>

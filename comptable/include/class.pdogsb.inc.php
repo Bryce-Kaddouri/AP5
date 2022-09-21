@@ -300,11 +300,11 @@ class PdoGsb
  
 	 * @param $idFrais 
 	 */
-	public function supprimerFraisHorsForfait($idFrais, $idVisiteur)
+	public function supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois)
 	{
-		$req = "delete from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "';";
+		$req = "delete from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='" . $mois . "';";
 		PdoGsb::$monPdo->exec($req);
-		header("Location: index.php?uc=gererFrais&action=voirFrais");
+		header("Location: index.php?uc=validerFrais&action=afficherEtat");
 	}
 	/**
 	 * change le statut d'une fiche de frais en VA (valider)

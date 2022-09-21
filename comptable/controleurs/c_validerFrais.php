@@ -53,9 +53,12 @@ switch ($action) {
             }
         }
     case 'rejeterFrais': {
-            $idFrais = $_REQUEST['idFrais'];
-            $idVisiteur = $_REQUEST['idVisiteur'];
-            $pdo->supprimerFraisHorsForfait($idFrais, $idVisiteur);
+            $idFrais = $GET['idFrais'];
+            $idVisiteur = $GET['idVisiteur'];
+            $mois = $GET['mois'];
+            echo $idFrais;
+            die();
+            $pdo->supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois);
             break;
         }
 }

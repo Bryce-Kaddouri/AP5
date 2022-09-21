@@ -17,14 +17,13 @@ switch ($uc) {
 			include("controleurs/c_connexion.php");
 			break;
 		}
-	case 'validerFrais': { /*avant : gererFrais*/
+	case 'validerFrais': { 
 			include("controleurs/c_validerFrais.php");
 			break;
 		}
-	case 'suivrePaiement': { /*avant : gererFrais*/
+	case 'suivrePaiement': { 
 			include("controleurs/c_suivrePaiement.php");
 			break;
 		}
 }
 include("vues/v_pied.php");
-?>
