@@ -41,6 +41,7 @@ switch ($action) {
 
 			// récupération infos frais hors forfait
 			$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
+			$totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($idVisiteur, $leMois);
 			// fin récupération infos frais hors forfait
 
 			// inclusion vue état frais

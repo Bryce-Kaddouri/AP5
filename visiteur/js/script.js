@@ -72,6 +72,6 @@ $(document).ready(function () {
     }
     // fonction qui permet de changer le titre de la page en fonction de la page ou on se trouve
     $("#titrePage").html(getTitrePage(window.location.href));
-    console.log(getTitrePage(window.location.href))
+
 
 });

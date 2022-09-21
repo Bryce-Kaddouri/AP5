@@ -69,6 +69,14 @@
       <?php
       }
       ?>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="border-solid border-2 pb-2 pt-2 border-black text-2xl text-center font-semibold ">
+          <p class="text-red-600"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait'] ?> EUR</p>
+        </td>
+      </tr>
     </table>
   </div>
 </div>

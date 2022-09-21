@@ -2,21 +2,25 @@
     <div id="menuGauche" class=" mt-32 ">
 
        <aside class="w-64" aria-label="Sidebar">
-          <div id="sidebar" class=" w-64 h-full overflow-y-auto py-4 px-3 bg-nav mt-32  dark:bg-gray-800">
+          <div id="sidebar" class="largeSidebar w-64 h-full overflow-y-auto py-4 px-3 bg-nav mt-32  dark:bg-gray-800">
+
 
 
              <ul id="menuList" class="space-y-2">
-                <div id="btn-menu" class=" w-10">
-                   <svg id="btn-menuSVG" class="cursor-pointer float d-float " width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M22.9167 31.25L16.6667 25M16.6667 25L22.9167 18.75M16.6667 25H33.3333M6.25 25C6.25 22.5377 6.73498 20.0995 7.67726 17.8247C8.61953 15.5498 10.0006 13.4828 11.7417 11.7417C13.4828 10.0006 15.5498 8.61953 17.8247 7.67726C20.0995 6.73498 22.5377 6.25 25 6.25C27.4623 6.25 29.9005 6.73498 32.1753 7.67726C34.4502 8.61953 36.5172 10.0006 38.2582 11.7417C39.9993 13.4828 41.3805 15.5498 42.3227 17.8247C43.265 20.0995 43.75 22.5377 43.75 25C43.75 29.9728 41.7746 34.7419 38.2582 38.2582C34.7419 41.7746 29.9728 43.75 25 43.75C20.0272 43.75 15.2581 41.7746 11.7417 38.2582C8.22544 34.7419 6.25 29.9728 6.25 25V25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                   </svg>
-                </div>
 
-                <li id="user" class=" text-white font-regular text-xl mb-20 infoUser">
+
+                <li id="user" class=" text-white font-regular text-xl mb-5 infoUser">
                    Comptable :<br>
                    <span class="text-white font-semibold  text-2xl hover:underline cursor-pointer">
                       <?php echo $_SESSION['prenom'] . "  " . $_SESSION['nom'] ?>
                    </span>
+                </li>
+                <li>
+                   <div id="btn-menu" class=" w-10">
+                      <svg id="btn-menuSVG" class="cursor-pointer  ml-auto " width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                         <path d="M22.9167 31.25L16.6667 25M16.6667 25L22.9167 18.75M16.6667 25H33.3333M6.25 25C6.25 22.5377 6.73498 20.0995 7.67726 17.8247C8.61953 15.5498 10.0006 13.4828 11.7417 11.7417C13.4828 10.0006 15.5498 8.61953 17.8247 7.67726C20.0995 6.73498 22.5377 6.25 25 6.25C27.4623 6.25 29.9005 6.73498 32.1753 7.67726C34.4502 8.61953 36.5172 10.0006 38.2582 11.7417C39.9993 13.4828 41.3805 15.5498 42.3227 17.8247C43.265 20.0995 43.75 22.5377 43.75 25C43.75 29.9728 41.7746 34.7419 38.2582 38.2582C34.7419 41.7746 29.9728 43.75 25 43.75C20.0272 43.75 15.2581 41.7746 11.7417 38.2582C8.22544 34.7419 6.25 29.9728 6.25 25V25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                   </div>
                 </li>
                 <li>
                    <a href="index.php?uc=validerFrais&action=choixVisiteurMois" title="Selectionner Visiteur et mois" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
