@@ -5,8 +5,13 @@
   <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
   <link rel="stylesheet" href="../tailwind/output.css">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <link rel="stylesheet" href="../tailwind/output.css">
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
   <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+
 </head>
 
 <body class="m-0 p-0">
