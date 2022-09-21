@@ -57,21 +57,21 @@ $(document).ready(function () {
     });
 
 
+
     // fonction qui permt de récupérer l'url de la page et de retourner un titre en fonction de l'url
-    function getTitrePage(url) {
-        if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=deconnexion') {
-            return 'Authentification - GSB';
-        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=valideConnexion") {
-            return 'Accueil Visiteur - GSB';
-        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=selectionnerMois" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=voirEtatFrais") {
-            return 'Consulter mes fiches de frais - GSB';
+    function getAction(url) {
+
+        // recupération de l'action avec une expression régulière qui renvoi tous les parametre de l'url dans un tableau et on recupere le parametre action
+        const uc = url.match(/uc=([^&]*)/)[1];
+        // on retourne le titre en fonction de l'action
+        if (uc == 'gererFrais') {
+            return 'Saisie fiche de frais';
+        } else if (uc == 'etatFrais') {
+            return 'Consultation de mes fiches de frais';
         }
-        else if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=saisirFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerMajFraisForfait' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerCreationFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=supprimerFrais') {
-            return 'Saisir les frais - GSB';
-        }
+
     }
-    // fonction qui permet de changer le titre de la page en fonction de la page ou on se trouve
-    $("#titrePage").html(getTitrePage(window.location.href));
-
-
-});
+    const url = window.location.href;
+    const titre = getAction(url);
+    $('#titrePage').text(titre);
+})
