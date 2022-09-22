@@ -56,7 +56,6 @@ $(document).ready(function () {
         })
     });
 
-
     // fonction qui permt de récupérer l'url de la page et de retourner un titre en fonction de l'url
     function getAction(url) {
         // recupération de l'action avec une expression régulière qui renvoi tous les parametre de l'url dans un tableau et on recupere le parametre action
@@ -92,5 +91,4 @@ $(document).ready(function () {
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);
 
-
-});
+})

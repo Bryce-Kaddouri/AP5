@@ -164,36 +164,36 @@ function valideInfosFrais($dateFrais, $libelle, $montant, $justificatif)
 {
 	if ($dateFrais == "") {
 		ajouterErreur("Le champ date ne doit pas être vide");
-		// echo "<script>alert('Le champ date ne doit pas être vide')</script>";
+		echo "<script>alert('Le champ date ne doit pas être vide')</script>";
 	} else {
 		if (!estDatevalide($dateFrais)) {
 			ajouterErreur("Date invalide");
-			// echo "<script>alert('Date invalide')</script>";
+			echo "<script>alert('Date invalide')</script>";
 		} else {
 			if (estDateDepassee($dateFrais)) {
 				ajouterErreur("date d'enregistrement du frais dépassé, plus de 1 an");
-				// echo "<script>alert('date d'enregistrement du frais dépassé, plus de 1 an')</script>";
+				echo "<script>alert('date d'enregistrement du frais dépassé, plus de 1 an')</script>";
 			}
 		}
 	}
 	if ($libelle == "") {
 		ajouterErreur("Le champ description ne peut pas être vide");
-		// echo "<script>alert('Le champ description ne peut pas être vide')</script>";
+		echo "<script>alert('Le champ description ne peut pas être vide')</script>";
 	}
 	if ($montant == "") {
 		ajouterErreur("Le champ montant ne peut pas être vide");
-		// echo "<script>alert('Date invalide')</script>";
+		echo "<script>alert('Date invalide')</script>";
 	} else
 		if (!is_numeric($montant)) {
 		ajouterErreur("Le champ montant doit être numérique");
-		// echo "<script>alert('Le champ montant doit être numérique')</script>";
+		echo "<script>alert('Le champ montant doit être numérique')</script>";
 	} else 
 		if ($montant <= 0) {
 		ajouterErreur("Le champ montant n'est pas valide");
 	} else 
 		if ($justificatif != '0' || $justificatif != '1') {
 		ajouterErreur("Le champ justificatif doit être rempli");
-		// echo "<script>alert('Le champ justificatif ne peut pas être vide')</script>";
+		echo "<script>alert('Le champ justificatif ne peut pas être vide')</script>";
 	}
 }
 /**
@@ -221,3 +221,76 @@ function nbErreurs()
 		return count($_REQUEST['erreurs']);
 	}
 }
+
+// -----------------------------------------Auteur : Bryce Kaddouri -------------------------------------------------------- //
+/**
+ * retourne vrai si la valeur du paramétre regex correspond à l'expression régulière regex
+ * @param $regex
+ * @param $input
+ * @return bool
+ */
+
+function verifiInputRegex($input, $regex)
+{
+	if (preg_match($regex, $input)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function validerInputRegex($input, $regex, $messageErreur)
+{
+	if (!verifiInputRegex($input, $regex)) {
+		$erreur = array(false, $messageErreur);
+		return $erreur;
+	} else {
+		return true;
+	}
+}
+
+function validerAjoutFraisHF($date, $libelle, $montant, $justificatif)
+{
+	$verifDate = validerInputRegex($date, '/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/', "La date doit être au format JJ/MM/AAAA");
+	$verifLibelle = validerInputRegex($libelle, '/^[a-zA-Z0-9 ]{1,100}$/', "Le libellé doit être composé de 1 à 100 caractères alphanumériques");
+	$verifMontant = validerInputRegex($montant, '/^[0-9]+[.,]?[0-9]*$/', "Le montant doit être composé de 1 à 10 chiffres");
+	$verifJustificatif = validerInputRegex($justificatif, '/^[0-1]{1}$/', "Le justificatif doit être composé de 1 chiffre");
+
+	if ($verifDate == true && $verifLibelle == true && $verifMontant == true && $verifJustificatif == true) {
+		return true;
+	} else {
+		$erreur = array(false, $verifDate[1], $verifLibelle[1], $verifMontant[1], $verifJustificatif[1]);
+		return $erreur;
+	}
+}
+
+
+
+
+	// regex valeur numérique uniquement
+	// $regex = "/^[0-9]+$/";
+
+	// regex valeur numérique avec virgule uniquement
+	// $regex = "/^[0-9]+[.,]?[0-9]*$/";
+
+	// regex valeur numérique avec un point ou une virgule
+	// $regex = "/^[0-9]+[.,]?[0-9]*$/";
+
+	// regex date au format jj/mm/aaaa uniquement
+	// $regex = "/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/";
+	// explication : / permet de délimiter le début et la fin de l'expression
+	// ^ permet de dire que l'expression doit commencer par
+	// [0-2] permet de dire que le premier chiffre doit être compris entre 0 et 2
+	// [0-9] permet de dire que le deuxième chiffre doit être compris entre 0 et 9
+	// | permet de dire ou
+	// (3) permet de dire que le premier chiffre doit être égal à 3
+	// [0-1] permet de dire que le deuxième chiffre doit être compris entre 0 et 1
+	// (\/) permet de dire que le caractère suivant doit être un /
+	// (((0)[0-9])|((1)[0-2])) permet de dire que le premier chiffre doit être compris entre 0 et 1 et le deuxième chiffre entre 0 et 9
+	// | permet de dire ou
+	// ((1)[0-2]) permet de dire que le premier chiffre doit être égal à 1 et le deuxième chiffre entre 0 et 2
+	// (\/) permet de dire que le caractère suivant doit être un /
+	// \d{4} permet de dire que les 4 chiffres suivants doivent être compris entre 0 et 9
+	// $ permet de dire que l'expression doit se terminer par
+
+	// 
