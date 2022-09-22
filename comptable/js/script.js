@@ -136,8 +136,6 @@ $(document).ready(function () {
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);
 
-
-
 });
 
 
