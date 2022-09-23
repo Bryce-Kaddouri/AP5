@@ -45,8 +45,36 @@ $(document).ready(function () {
     // début de la gestion du bouton valider une fiche de frais pour le module comptable
     $('#validerFiche').on('click', function () {
         let idVisiteurFiche = $(this).attr('dt-idVisiteur');
-        let $moisFiche = $(this).attr('dt-idmoisfiche');
-        alert($moisFiche + " " + idVisiteurFiche);
+        let moisFiche = $(this).attr('dt-idmoisfiche');
+
+        Swal.fire({
+            title: 'Confirmer la validation de la fiche ?',
+            text: "Vous allez confirmer cette fiche de frais ! ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, valider !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'valider avec succés!',
+                    'La fiche de frais a été validée..',
+                    'success'
+                ).then(() => {
+                    // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                    window.location.href = "index.php?uc=validerFrais&action=validerFicheFrais&idVisiteur=" + idVisiteurFiche + "&moisFiche=" + moisFiche;
+
+                })
+            } else {
+                Swal.fire(
+                    'Annulé',
+                    'La fiche de frais n\'a pas été validée',
+                    'error'
+                )
+            }
+        })
+
 
     });
 

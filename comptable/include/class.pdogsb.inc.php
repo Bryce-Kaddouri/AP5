@@ -309,14 +309,16 @@ class PdoGsb
 	/**
 	 * change le statut d'une fiche de frais en VA (valider)
  
-	 * @param $idFrais 
+	 * @param $moisFicheFrais 
+	 * @param $idVisiteur
 	 */
-	public function validerFicheFrais($idFicheFrais, $idVisiteur)
+	public function validerFicheFrais($moisFicheFrais, $idVisiteur, $montantValide)
 	{
-		$req = "update fichefrais set idEtat = 'VA', montantValide='152.00', dateModif=now() where idVisiteur = '" . $idVisiteur . "' and id = '" . $idFicheFrais . "';";
+
+		$req = "update fichefrais set idEtat = 'VA', montantValide=" . $montantValide . ", dateModif=now() where idVisiteur = '" . $idVisiteur . "' and mois = '" . $moisFicheFrais . "';";
 		echo $req;
-		// PdoGsb::$monPdo->exec($req);
-		// header("Location: index.php?uc=gererFrais&action=voirFrais");
+		PdoGsb::$monPdo->exec($req);
+		header("Location: index.php?uc=validerFrais&action=choixVisiteurMois");
 	}
 	/**
 	 * Retourne les mois pour lesquel un visiteur a une fiche de frais
@@ -492,5 +494,25 @@ class PdoGsb
 		$req->execute();
 		$lesidFicheFrais = $req->fetchAll();
 		return $lesidFicheFrais;
+	}
+
+	/**
+	 * Retourne le montant total pour les frais hors forfait d'un visiteur pour un mois 
+	 * donné concernés par les deux arguments
+ 
+	 * @param $idVisiteur 
+	 * @param $mois sous la forme aaaamm
+	 * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
+	 */
+	public function getTotalFraisHorsForfait($idVisiteur, $mois)
+	{
+		$req = "SELECT SUM(lignefraishorsforfait.montant) 
+		as totalFraisHorsForfait
+		FROM `lignefraishorsforfait`
+		where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
+		and lignefraishorsforfait.mois='$mois';";
+		$res = PdoGsb::$monPdo->query($req);
+		$totalFraisForfait = $res->fetch();
+		return $totalFraisForfait;
 	}
 }

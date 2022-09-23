@@ -24,8 +24,6 @@ switch ($action) {
                 include("vues/v_listeMoisVisiteur.php");
                 $leMois = $_REQUEST['lstMois'];
                 $leVisiteur = $_REQUEST['lstVisiteur'];
-
-
                 $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
                 $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
                 if (is_array($infosFiche)) {
@@ -38,6 +36,7 @@ switch ($action) {
 
 
                     $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
+                    $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($leVisiteur, $leMois);
 
 
                     include("vues/v_ficheEtat.php");
@@ -52,13 +51,26 @@ switch ($action) {
                 include("vues/v_erreurs.php");
             }
         }
-    case 'rejeterFrais': {
-            $idFrais = $GET['idFrais'];
-            $idVisiteur = $GET['idVisiteur'];
-            $mois = $GET['mois'];
-            echo $idFrais;
-            die();
-            $pdo->supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois);
-            break;
+    case 'validerFicheFrais': {
+            $lemoisFiche = $_GET['moisFiche'];
+            $levisiteurFiche = $_GET['idVisiteur'];
+
+            echo "<script>alert('" . $levisiteurFiche . " " . $lemoisFiche . "')</script>";
+
+            $totalFraisForfait = $pdo->getTotalFraisForfait($levisiteurFiche, $lemoisFiche);
+            $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($levisiteurFiche, $lemoisFiche);
+            echo "<script>alert('" . $totalFraisForfait['totalFraisForfait'] . " " . $totalFraisHorsForfait['totalFraisHorsForfait'] . "')</script>";
+            $montantValide = $totalFraisForfait['totalFraisForfait'] + $totalFraisHorsForfait['totalFraisHorsForfait'];
+            $validation = $pdo->validerFicheFrais($levisiteurFiche, $lemoisFiche, $montantValide);
         }
+
+        //     case 'rejeterFrais': {
+        //             $idFrais = $GET['idFrais'];
+        //             $idVisiteur = $GET['idVisiteur'];
+        //             $mois = $GET['mois'];
+        //             echo $idFrais;
+        //             die();
+        //             $pdo->supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois);
+        //             break;
+        //         }
 }
