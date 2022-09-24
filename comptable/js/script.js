@@ -19,7 +19,7 @@ $(document).ready(function () {
             // rotation du bouton
             $('#btn-menuSVG').css({
                 'transform': 'rotate(180deg)',
-                'transition': 'transform 1.5s'
+                'transition': 'transform 0.8s'
             });
 
         } else {
@@ -36,7 +36,7 @@ $(document).ready(function () {
             // rotation du bouton
             $('#btn-menuSVG').css({
                 'transform': 'rotate(0deg)',
-                'transition': 'transform 1.5s'
+                'transition': 'transform 0.8s'
             });
         }
     });
@@ -100,6 +100,42 @@ $(document).ready(function () {
             }
         })
     });
+
+    // fonction qui permt de récupérer l'url de la page et de retourner un titre en fonction de l'url
+    function getAction(url) {
+        // recupération de l'action avec une expression régulière qui renvoi tous les parametre de l'url dans un tableau et on recupere le parametre action
+        const uc = url.match(/uc=([^&]*)/)[1];
+        const action = url.match(/action=([^&]*)/)[1];
+        // on retourne le titre en fonction de l'action
+        if (uc == 'validerFrais') {
+            return 'Validation fiche de frais';
+        } else if (uc == 'suivrePaiement') {
+            return 'Suivi paiement fiches de frais';
+        } else if (uc == 'connexion') {
+            if (action == 'valideConnexion') {
+                return 'Accueil Comptable'
+            } else if (action == 'deconnexion') {
+                return 'Authentification Comptable'
+            }
+        } else {
+            return 'Authentification Comptable'
+
+        }
+
+    }
+    // recuperation url page
+    const url = window.location.href;
+    const testParamUrl = url.split('?');
+    // explode url avec ? si taille > 1 ==> url a des prametres sinon pas de parametre
+    var titre = '';
+    if (testParamUrl.length > 1) {
+        titre = getAction(url);
+    } else {
+        titre = "Authentification Comptable"
+    }
+    // affichge la variable titre dans le h1 de v_entete
+    $('#titrePage').text(titre);
+
 });
 
 

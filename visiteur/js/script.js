@@ -1,23 +1,46 @@
-$(document).ready(function () {
-    // fonction qui gere la side bar
-    $('#btn-menu').click(function () {
-        $(".infoUser").toggle(
-            function () {
-                $(".infoUser").addClass('d-none')
-                $("#sidebar").addClass('w-18')
-                // $('#btn-menuSVG').addClass('rotate180')
-                $('#btn-menuSVG').css('transform', 'rotate(180deg)')
-            },
-            function () {
-                $(".infoUser").removeClass('d-none')
-                $("#sidebar").removeClass('w-64')
-                $('#btn-menuSVG').addClass('rotate180')
-                console.log('test retour')
+// ce document gere la side bar , et les boutons pour valider une fiche de frais, la mettre en attente et supprimer une ligne hors forfait
 
-            }
-        );
-    })
-    // fin fonction qui gere la side bar
+$(document).ready(function () {
+
+   // début gestion de la sidebar
+   $('#btn-menuSVG').on('click', function () {
+    // verification si #sidebar est possede la classe largeSidebar
+    // Si vrai Alors on la retire et on ajoute la classe smallSidebar ainsi que cacher .infoUser et reduire la taille de #sidebar a 80px
+    if ($('#sidebar').hasClass('largeSidebar')) {
+        $('#sidebar').removeClass('largeSidebar');
+        $('#sidebar').addClass('smallSidebar');
+        $('#btn-menu').removeClass('mr-5');
+        $('#btn-menu').addClass('mr-auto');
+        $('#btn-menu').addClass('ml-auto');
+        $('.infoUser').hide();
+        $('#sidebar').animate({
+            width: '80px'
+        });
+        // rotation du bouton
+        $('#btn-menuSVG').css({
+            'transform': 'rotate(180deg)',
+            'transition': 'transform 0.8s'
+        });
+
+    } else {
+        // Sinon on retire la classe smallSidebar et on ajoute la classe largeSidebar ainsi que afficher .infoUser et agrandir la taille de #sidebar a 250px
+        $('#sidebar').removeClass('smallSidebar');
+        $('#sidebar').addClass('largeSidebar');
+        $('.infoUser').show();
+        $('#sidebar').animate({
+            width: '250px'
+        });
+        $('#btn-menu').removeClass('mr-auto');
+        $('#btn-menu').addClass('mr-5');
+        $('#btn-menu').addClass('ml-auto');
+        // rotation du bouton
+        $('#btn-menuSVG').css({
+            'transform': 'rotate(0deg)',
+            'transition': 'transform 0.8s'
+        });
+    }
+});
+// fin de gestion de la sidebar 
 
     // toogleclass sur le bouton supprimer ligne qui permet d'afficher les petiti rond rouge pour supprimer une ligne
     $('#supprimerLigne').on('click', function () {
@@ -56,22 +79,39 @@ $(document).ready(function () {
         })
     });
 
-
     // fonction qui permt de récupérer l'url de la page et de retourner un titre en fonction de l'url
-    function getTitrePage(url) {
-        if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=deconnexion') {
-            return 'Authentification - GSB';
-        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=connexion&action=valideConnexion") {
-            return 'Accueil Visiteur - GSB';
-        } else if (url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=selectionnerMois" || url == "http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=etatFrais&action=voirEtatFrais") {
-            return 'Consulter mes fiches de frais - GSB';
+    function getAction(url) {
+        // recupération de l'action avec une expression régulière qui renvoi tous les parametre de l'url dans un tableau et on recupere le parametre action
+        const uc = url.match(/uc=([^&]*)/)[1];
+        const action = url.match(/action=([^&]*)/)[1];
+        // on retourne le titre en fonction de l'action
+        if (uc == 'gererFrais') {
+            return 'Saisie fiche de frais';
+        } else if (uc == 'etatFrais') {
+            return 'Consultation de mes fiches de frais';
+        } else if (uc == 'connexion') {
+            if (action == 'valideConnexion') {
+                return 'Accueil Visiteur'
+            } else if (action == 'deconnexion') {
+                return 'Authentification Visiteur'
+            }
+        } else {
+            return 'Authentification Visiteur'
+
         }
-        else if (url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=saisirFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerMajFraisForfait' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=validerCreationFrais' || url == 'http://localhost/ap5TailLocal_v0.3/visiteur/index.php?uc=gererFrais&action=supprimerFrais') {
-            return 'Saisir les frais - GSB';
-        }
+
     }
-    // fonction qui permet de changer le titre de la page en fonction de la page ou on se trouve
-    $("#titrePage").html(getTitrePage(window.location.href));
+    // recuperation url page
+    const url = window.location.href;
+    const testParamUrl = url.split('?');
+    // explode url avec ? si taille > 1 ==> url a des prametres sinon pas de parametre
+    var titre = '';
+    if (testParamUrl.length > 1) {
+        titre = getAction(url);
+    } else {
+        titre = "Authentification Visiteur"
+    }
+    // affichge la variable titre dans le h1 de v_entete
+    $('#titrePage').text(titre);
 
-
-});
+})
