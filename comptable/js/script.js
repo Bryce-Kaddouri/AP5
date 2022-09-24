@@ -131,7 +131,9 @@ $(document).ready(function () {
     if (testParamUrl.length > 1) {
         titre = getAction(url);
     } else {
+
         titre = "Authentification Comptable"
+
     }
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);
