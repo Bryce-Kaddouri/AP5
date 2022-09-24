@@ -33,7 +33,7 @@
                         <!-- <input type="reset" value="Annuler" name="annuler"> -->
                   </div>
                   <div class="w-full pb-5 text-center" style="background-color: #283044;">
-                        <a href="../index.html" class="text-blue-600 hover:text-blue-400">Retourner à la page d'accueil</a>
+                        <a id="retour-position" href="../index.html" class="text-white hover:text-blue-400">Retourner à la page d'accueil</a> 
                   </div>
 
 
