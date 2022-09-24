@@ -12,16 +12,31 @@
                 <li id="user" class=" text-white font-regular text-xl mb-5 infoUser">
                    Comptable :<br>
                    <span class="text-white font-semibold  text-2xl hover:underline cursor-pointer">
-                      <?php echo $_SESSION['prenom'] . "  " . $_SESSION['nom'] ?>
+                      <?php echo $_SESSION['prenom'] . "  " . $_SESSION['nom'] ?><br>
                    </span>
                 </li>
                 <li>
-                   <div id="btn-menu" class=" w-10">
+                  <!-- <a href="" title="" class=""> -->
+                   <div id="btn-menu" class=" w-10"> 
                       <svg id="btn-menuSVG" class="cursor-pointer  ml-auto " width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <path d="M22.9167 31.25L16.6667 25M16.6667 25L22.9167 18.75M16.6667 25H33.3333M6.25 25C6.25 22.5377 6.73498 20.0995 7.67726 17.8247C8.61953 15.5498 10.0006 13.4828 11.7417 11.7417C13.4828 10.0006 15.5498 8.61953 17.8247 7.67726C20.0995 6.73498 22.5377 6.25 25 6.25C27.4623 6.25 29.9005 6.73498 32.1753 7.67726C34.4502 8.61953 36.5172 10.0006 38.2582 11.7417C39.9993 13.4828 41.3805 15.5498 42.3227 17.8247C43.265 20.0995 43.75 22.5377 43.75 25C43.75 29.9728 41.7746 34.7419 38.2582 38.2582C34.7419 41.7746 29.9728 43.75 25 43.75C20.0272 43.75 15.2581 41.7746 11.7417 38.2582C8.22544 34.7419 6.25 29.9728 6.25 25V25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
+                         <path d="M22.9167 31.25L16.6667 25M16.6667 25L22.9167 18.75M16.6667 25H33.3333M6.25 25C6.25 22.5377 6.73498 20.0995 7.67726 17.8247C8.61953 15.5498 10.0006 13.4828 11.7417 11.7417C13.4828 10.0006 15.5498 8.61953 17.8247 7.67726C20.0995 6.73498 22.5377 6.25 25 6.25C27.4623 6.25 29.9005 6.73498 32.1753 7.67726C34.4502 8.61953 36.5172 10.0006 38.2582 11.7417C39.9993 13.4828 41.3805 15.5498 42.3227 17.8247C43.265 20.0995 43.75 22.5377 43.75 25C43.75 29.9728 41.7746 34.7419 38.2582 38.2582C34.7419 41.7746 29.9728 43.75 25 43.75C20.0272 43.75 15.2581 41.7746 11.7417 38.2582C8.22544 34.7419 6.25 29.9728 6.25 25V25Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />   
+                        </svg>
                    </div>
+                  <!-- </a> -->
+
                 </li>
+
+                <li>
+                   <a href="index.php?uc=connexion&action=valideConnexion" title="Selectionner Visiteur et mois" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
+                   <svg class=" font-semibold flex-shrink-0 w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white d-block block hover:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" width="43" height="54">
+                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+
+
+                      <span class="ml-3 text-white text-xl infoUser">Accueil</span>
+                   </a>
+                </li>
+
                 <li>
                    <a href="index.php?uc=validerFrais&action=choixVisiteurMois" title="Selectionner Visiteur et mois" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
                       <svg class="flex-shrink-0 w-10 h-10 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="43" height="54" viewBox="0 0 43 54" fill="none" xmlns="http://www.w3.org/2000/svg">

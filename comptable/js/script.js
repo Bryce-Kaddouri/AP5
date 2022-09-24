@@ -19,7 +19,7 @@ $(document).ready(function () {
             // rotation du bouton
             $('#btn-menuSVG').css({
                 'transform': 'rotate(180deg)',
-                'transition': 'transform 1.5s'
+                'transition': 'transform 0.8s'
             });
 
         } else {
@@ -36,7 +36,7 @@ $(document).ready(function () {
             // rotation du bouton
             $('#btn-menuSVG').css({
                 'transform': 'rotate(0deg)',
-                'transition': 'transform 1.5s'
+                'transition': 'transform 0.8s'
             });
         }
     });
@@ -118,7 +118,7 @@ $(document).ready(function () {
                 return 'Authentification Comptable'
             }
         } else {
-            return 'Authentification Visiteur'
+            return 'Authentification Comptable'
 
         }
 
@@ -131,7 +131,9 @@ $(document).ready(function () {
     if (testParamUrl.length > 1) {
         titre = getAction(url);
     } else {
-        titre = "Authentification Visiteur"
+
+        titre = "Authentification Comptable"
+
     }
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);

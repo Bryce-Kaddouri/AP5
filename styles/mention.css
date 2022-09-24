@@ -26,3 +26,19 @@
     left: 1rem;
     float: left;
 }
+
+.BtRetour{
+    position:relative;
+    top: 8rem;
+    left: 50%;
+    font-size: 30px;
+    background-color:  #185875;
+    /* background-color: rgb(53, 53, 97); */
+    border-radius: 10px ;
+    color: white;
+    padding: 10px;
+}
+
+.BtRetour:hover{
+    color: white;
+}
