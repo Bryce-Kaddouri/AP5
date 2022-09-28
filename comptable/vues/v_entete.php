@@ -7,6 +7,7 @@
   <!-- Importation plugin -->
 
   <link rel="stylesheet" href="../tailwind/output.css">
+  <link rel="stylesheet" href="../node_modules/bulma/css/bulma.css">
   <script src="../node_modules/jquery/dist/jquery.js"></script>
   <script src="../node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
   <!---->

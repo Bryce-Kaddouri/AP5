@@ -86,7 +86,7 @@ class PdoGsb
 	public function getLesFraisHorsForfait($idVisiteur, $mois)
 	{
 		$req = "select lignefraishorsforfait.*, statutfraishf.libelle as libEtat from lignefraishorsforfait inner join statutfraishf on numEtat = statutfraishf.id where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
-		and lignefraishorsforfait.mois = '$mois' ";
+		and lignefraishorsforfait.mois = '$mois';";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		$nbLignes = count($lesLignes);
@@ -305,10 +305,9 @@ class PdoGsb
 	 */
 	public function majEtatFraisHorsForfait($idFrais, $idVisiteur, $mois, $idEtat)
 	{
+		echo "<script>console.log('test:-" . $mois . "-')</script>";
 		// $req = "update  from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='" . $mois . "';";
-		$req = "update lignefraishorsforfait set numEtat = $idEtat where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='$mois';";
-		echo $req;
-		die();
+		$req = "update lignefraishorsforfait set numEtat = $idEtat where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois = '" . $mois . "';";
 		return PdoGsb::$monPdo->exec($req);
 
 		// header("Location: index.php?uc=validerFrais&action=afficherEtat");
@@ -407,8 +406,9 @@ class PdoGsb
 		etat.libelle as libEtat 
 		from  fichefrais 
 		inner join Etat 
-		on ficheFrais.idEtat = Etat.id 
-		where fichefrais.idVisiteur ='$idVisiteur' 
+		on ficheFrais.idEtat = Etat.id
+		where fichefrais.idVisiteur ='$idVisiteur'
+		and idEtat='CR' 
 		and fichefrais.mois = '$mois';";
 		$res = PdoGsb::$monPdo->query($req);
 		$laLigne = $res->fetch();
@@ -515,6 +515,26 @@ class PdoGsb
 		FROM `lignefraishorsforfait`
 		where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
 		and lignefraishorsforfait.mois='$mois';";
+		$res = PdoGsb::$monPdo->query($req);
+		$totalFraisForfait = $res->fetch();
+		return $totalFraisForfait;
+	}
+
+	/**
+	 * Retourne le montant total pour les frais hors forfait d'un visiteur pour un mois 
+	 * donné concernés par les deux arguments
+ 
+	 * @param $idVisiteur 
+	 * @param $mois sous la forme aaaamm
+	 * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
+	 */
+	public function getTotalFraisHorsForfaitVA($idVisiteur, $mois)
+	{
+		$req = "SELECT SUM(lignefraishorsforfait.montant) 
+		as totalFraisHorsForfait
+		FROM `lignefraishorsforfait`
+		where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
+		and lignefraishorsforfait.mois='$mois' and numEtat=1;";
 		$res = PdoGsb::$monPdo->query($req);
 		$totalFraisForfait = $res->fetch();
 		return $totalFraisForfait;

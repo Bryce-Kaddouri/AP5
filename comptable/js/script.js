@@ -145,7 +145,7 @@ $(document).ready(function () {
                         'success'
                     ).then(() => {
                         // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
-                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
+                        window.location.href = "index.php?uc=validerFrais&action=majFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
 
                     })
                 }
@@ -156,7 +156,7 @@ $(document).ready(function () {
                         'success'
                     ).then(() => {
                         // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
-                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
+                        window.location.href = "index.php?uc=validerFrais&action=majFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
 
                     })
                 } else if (idDeEtat == 3) {
@@ -166,11 +166,9 @@ $(document).ready(function () {
                         'success'
                     ).then(() => {
                         // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
-                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
+                        window.location.href = "index.php?uc=validerFrais&action=majFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
                     })
                 }
-
-
             } else {
                 Swal.fire(
                     'Annulé',
@@ -217,6 +215,15 @@ $(document).ready(function () {
     }
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);
+
+    // fonction pour fermer le pop up d'affichage des erreurs avec une class toogle
+    // verif regex number 
+    $regex = /^[0-9]+$/;
+
+    $('.delete').on('click', function () {
+        let numNotif = $(this).attr('dt-numNotif');
+        $('.notification.numNotif' + numNotif).remove();
+    });
 
 });
 

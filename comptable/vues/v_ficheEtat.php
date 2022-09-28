@@ -109,7 +109,7 @@
                             ?>
 
                                     <tr>
-                                        <td class="w-50 pb-1 pt-1  text-center deleteAction"><button dt-EtatLigne="<?php echo $infoHF['numEtat'] ?>" dt-moisFiche=" <?php echo $infoHF['mois']; ?> " dt-idFrais=" <?php echo $infoHF['id']; ?>" dt-idVisiteur="<?php echo $infoHF['idVisiteur']; ?>" class=" rounded-sm btn-suppr">
+                                        <td class="w-50 pb-1 pt-1  text-center deleteAction"><button dt-EtatLigne="<?php echo $infoHF['numEtat'] ?>" dt-moisFiche="<?php echo $infoHF['mois']; ?>" dt-idFrais=" <?php echo $infoHF['id']; ?>" dt-idVisiteur="<?php echo $infoHF['idVisiteur']; ?>" class=" rounded-sm btn-suppr">
                                                 <?php echo $icon; ?>
                 </div>
                 </button> </td>
@@ -170,8 +170,7 @@
     </div>
     <div class="borderButtonValidation d-relative  w-auto mt-5 h-auto pb-5 ml-20 mr-20">
         <p class="w-auto  ">
-            <button id="supprimerLigne" class="pl-5 pr-5 pb-1 pt-1  bg-red-600 text-white text-l font-regular rounded hover:bg-red-700 cursor-pointer" type="submit" size="20">Supprimer une ligne</button>
-            <button id="attenteLigneFiche" class="pl-5 pr-5 pb-1 pt-1  bg-blue-600 text-white text-l font-regular rounded hover:bg-blue-700 cursor-pointer" id="annuler" type="reset" value="Effacer" size="20">Mettre en attente</button>
+            <button id="supprimerLigne" class="pl-5 pr-5 pb-1 pt-1  bg-red-600 text-white text-l font-regular rounded hover:bg-red-700 cursor-pointer" type="submit" size="20">Annuler </button>
             <button dt-idmoisFiche="<?php echo $infosFiche['mois'] ?>" dt-idVisiteur="<?php echo $infosFiche['idVisiteur'] ?>" id="validerFiche" class="validerFiche pl-5 pr-5 pb-1 pt-1  bg-green-600 text-white text-l font-regular rounded hover:bg-green-700 cursor-pointer" size="20">Valider la fiche</button>
         </p>
     </div>

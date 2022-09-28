@@ -28,10 +28,37 @@
              <select class="w-auto rounded border-input" id="lstMois" name="lstMois">
                <option value="">-- Saisir un mois --</option>
                <?php
-                foreach ($lesMois as $unMois) {
-                  $mois = $unMois['unMois'];
-                  echo "<option value='" . $mois . "'>" . $mois . "</option>";
+
+                // tableau des mois en chaine de caractere 
+                $lesMois = array(
+                  "01" => "Janvier",
+                  "02" => "Février",
+                  "03" => "Mars",
+                  "04" => "Avril",
+                  "05" => "Mai",
+                  "06" => "Juin",
+                  "07" => "Juillet",
+                  "08" => "Août",
+                  "09" => "Septembre",
+                  "10" => "Octobre",
+                  "11" => "Novembre",
+                  "12" => "Décembre"
+                );
+
+                $anneeActuel = date("Y");
+
+                // creation des option dans la liste deroulante
+                foreach ($lesMois as $unMois => $libelle) {
+                  echo "<option value=" . $anneeActuel . $unMois . ">" . $libelle . " " . $anneeActuel . " </option>";
                 }
+
+                // foreach ($lesMois as $unMois) {
+                //   $numMois = substr($unMois, 4, 2);
+                //   $mois = $unMois['unMois'];
+
+
+                //   echo "<option value='" . $mois . "'>" . $numMois . "</option>";
+                // }
                 ?>
              </select>
            </div>
