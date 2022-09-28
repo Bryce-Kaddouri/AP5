@@ -79,20 +79,22 @@ $(document).ready(function () {
     });
 
 
+
+
     // fonction pour afficher un modal et supprimer une ligne hors forfait
 
-    $('#supprimerLigne').on('click', function () {
-        $('.deleteAction').toggleClass('d-none')
+    // $('#supprimerLigne').on('click', function () {
+    //     $('.deleteAction').toggleClass('d-none')
 
-        // recup le texte du bouton qui permet d'afficher les boutons pour supprimer une ligne 
-        // si le texte est égale a "Supprimer une ligne" alors on change le texte en "Annuler"
-        // sinon on change le texte en "Supprimer une ligne"
+    //     // recup le texte du bouton qui permet d'afficher les boutons pour supprimer une ligne 
+    //     // si le texte est égale a "Supprimer une ligne" alors on change le texte en "Annuler"
+    //     // sinon on change le texte en "Supprimer une ligne"
 
-        var text = $("#supprimerLigne").text();
-        $(this).text(
-            text === "Supprimer une ligne" ? "Annuler" : "Supprimer une ligne"
-        );
-    });
+    //     var text = $("#supprimerLigne").text();
+    //     $(this).text(
+    //         text === "Supprimer une ligne" ? "Annuler" : "Supprimer une ligne"
+    //     );
+    // });
 
     //fonction sweetAlert pour confirmer la suppression au click sur un bouton qui la class btn-suppr
 
@@ -100,29 +102,79 @@ $(document).ready(function () {
         const idVisiteur = $(this).attr('dt-idVisiteur');
         const moisFiche = $(this).attr('dt-moisFiche');
         const idFrais = $(this).attr('dt-idFrais');
+        const idEtat = $(this).attr('dt-etatligne');
+
+        console.log(idVisiteur + " " + moisFiche + " " + idFrais + " " + idEtat);
+        // tableau idEtat et libelleEtat
+        var etatLigne = {
+            1: 'Valider le frais',
+            2: 'Mettre en attente',
+            3: 'rejeter le frais'
+        }
+
+        var option = '';
+        //boucle de 1 à 3 
+        for (let i = 1; i <= 3; i++) {
+
+            console.log($('.option' + i).val());
+            if (i != idEtat) {
+                // on supprime l'option qui a la valeur de l'etat de la ligne
+                option = option + '<option class="option' + i + '"value="' + i + '">' + etatLigne[i] + '</option>';
+
+            }
+
+        }
+        // si 
         Swal.fire({
-            title: 'Confirmer la suppression ?',
-            text: "Vous allez supprimer ce frais ! ",
+            title: 'Choisir une action ' + idEtat,
+            text: "Vous allez modifier ce frais ! ",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, Supprimer'
+            confirmButtonText: 'Suivant',
+            html: '<select class="form-control" id="selectEtatFrais" name="selectEtatFrais">' + option + '</select>'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Supprimé avec succés!',
-                    'Le frais a été supprimé..',
-                    'success'
-                ).then(() => {
-                    // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
-                    window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                let idDeEtat = $('#selectEtatFrais').val();
+                console.log(idDeEtat);
+                if (idDeEtat == 1) {
+                    Swal.fire(
+                        'validé avec succés!',
+                        'Le frais a été validé !',
+                        'success'
+                    ).then(() => {
+                        // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
 
-                })
+                    })
+                }
+                else if (idDeEtat == 2) {
+                    Swal.fire(
+                        'mis en attente avec succés!',
+                        'Le frais a été reporté au mois prochain !',
+                        'success'
+                    ).then(() => {
+                        // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
+
+                    })
+                } else if (idDeEtat == 3) {
+                    Swal.fire(
+                        'rejeté avec succés!',
+                        'Le frais a été rejeté !',
+                        'success'
+                    ).then(() => {
+                        // window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                        window.location.href = "index.php?uc=validerFrais&action=rejeterFrais&idFrais=" + idFrais + "&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche + "&idEtat=" + idDeEtat;
+                    })
+                }
+
+
             } else {
                 Swal.fire(
                     'Annulé',
-                    'Le frais n\'a pas été supprimé',
+                    'Le frais n\'a pas été modifié',
                     'error'
                 )
             }

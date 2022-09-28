@@ -4,6 +4,7 @@
 <head>
   <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
   <link rel="stylesheet" href="../tailwind/output.css">
+  <link rel="stylesheet" href="../node_modules/bulma/css/bulma.css">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
   <link rel="stylesheet" href="../tailwind/output.css">

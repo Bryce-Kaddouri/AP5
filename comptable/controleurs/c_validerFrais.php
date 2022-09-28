@@ -33,18 +33,13 @@ switch ($action) {
                     // $moisConvertiString = $pdo->convertirMoisDateComplete($leMois);
                     $lesinfosForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
                     $totalFraisForfait = $pdo->getTotalFraisForfait($leVisiteur, $leMois);
-
-
                     $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
                     $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($leVisiteur, $leMois);
-
-
                     include("vues/v_ficheEtat.php");
                 } else {
                     ajouterErreur("Pas de fiche de frais pour ce visiteur ce mois");
                     include("vues/v_erreurs.php");
                 }
-
                 break;
             } else {
                 ajouterErreur("Aucun visiteur n'a été sélectionné");
@@ -54,23 +49,49 @@ switch ($action) {
     case 'validerFicheFrais': {
             $lemoisFiche = $_GET['moisFiche'];
             $levisiteurFiche = $_GET['idVisiteur'];
-
             echo "<script>alert('" . $levisiteurFiche . " " . $lemoisFiche . "')</script>";
-
             $totalFraisForfait = $pdo->getTotalFraisForfait($levisiteurFiche, $lemoisFiche);
             $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($levisiteurFiche, $lemoisFiche);
-            echo "<script>alert('" . $totalFraisForfait['totalFraisForfait'] . " " . $totalFraisHorsForfait['totalFraisHorsForfait'] . "')</script>";
             $montantValide = $totalFraisForfait['totalFraisForfait'] + $totalFraisHorsForfait['totalFraisHorsForfait'];
             $validation = $pdo->validerFicheFrais($levisiteurFiche, $lemoisFiche, $montantValide);
+            include("vues/v_listeMoisVisiteur.php");
+            include("vues/v_ficheEtat.php");
+            break;
         }
 
-        //     case 'rejeterFrais': {
-        //             $idFrais = $GET['idFrais'];
-        //             $idVisiteur = $GET['idVisiteur'];
-        //             $mois = $GET['mois'];
-        //             echo $idFrais;
-        //             die();
-        //             $pdo->supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois);
-        //             break;
-        //         }
+
+    case 'rejeterFrais': {
+            // recuperer parametres de l'URL sous forme de tableau avec regex 
+            // $idFrais = $_GET['idFrais'];
+            // $moisFiche = $_GET['moisFiche'];
+            // $idVisiteur = $_GET['idVisiteur'];
+            // $pdo->rejeterFrais($idFrais);
+            // $lesinfosHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $moisFiche);
+            // $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($idVisiteur, $moisFiche);
+            // include("vues/v_ficheEtat.php");
+            // include("vues/v_listeMoisVisiteur.php");
+            // $idVisiteur = $params[3];
+
+            // echo $_GET['idEtat'];
+            $idEtat = $_GET['idEtat'];
+            $idFrais = $_GET['idFrais'];
+            $moisFiche = $_GET['moisFiche'];
+            $idVisiteur = $_GET['idVisiteur'];
+
+            echo "<script>console.log('idEtat = " . $idEtat . "')</script>";
+            echo "<script>console.log('idFrais = " . $idFrais . "')</script>";
+            echo "<script>console.log('moisFiche = " . $moisFiche . "')</script>";
+            echo "<script>console.log('idVisiteur = " . $idVisiteur . "')</script>";
+
+            $pdo->majEtatFraisHorsForfait($idFrais, $idVisiteur, $moisFiche, $idEtat);
+
+            // echo "<script>alert('" . $moisFiche . "')</script>";
+
+            // echo "<script>alert('" . var_dump(($_GET)) . "')</script>";
+            // die();
+
+            // $lesVisiteurs = $pdo->afficherListeVisiteur();
+            // $lesMois = $pdo->afficherLesMois();
+            // include("vues/v_listeMoisVisiteur.php");
+        }
 }

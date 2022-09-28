@@ -85,7 +85,7 @@ class PdoGsb
 	 */
 	public function getLesFraisHorsForfait($idVisiteur, $mois)
 	{
-		$req = "select * from lignefraishorsforfait where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
+		$req = "select lignefraishorsforfait.*, statutfraishf.libelle as libEtat from lignefraishorsforfait inner join statutfraishf on numEtat = statutfraishf.id where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
 		and lignefraishorsforfait.mois = '$mois' ";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesLignes = $res->fetchAll();
@@ -299,12 +299,19 @@ class PdoGsb
 	 * Supprime le frais hors forfait dont l'id est passé en argument
  
 	 * @param $idFrais 
+	 * @param $idVisiteur
+	 * @param $mois sous la forme aaaamm
+	 * @param $idEtat : idEtat du frais (int)
 	 */
-	public function supprimerFraisHorsForfait($idFrais, $idVisiteur, $mois)
+	public function majEtatFraisHorsForfait($idFrais, $idVisiteur, $mois, $idEtat)
 	{
-		$req = "delete from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='" . $mois . "';";
-		PdoGsb::$monPdo->exec($req);
-		header("Location: index.php?uc=validerFrais&action=afficherEtat");
+		// $req = "update  from lignefraishorsforfait where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='" . $mois . "';";
+		$req = "update lignefraishorsforfait set numEtat = $idEtat where lignefraishorsforfait.id =$idFrais and idVisiteur = '" . $idVisiteur . "' and mois='$mois';";
+		echo $req;
+		die();
+		return PdoGsb::$monPdo->exec($req);
+
+		// header("Location: index.php?uc=validerFrais&action=afficherEtat");
 	}
 	/**
 	 * change le statut d'une fiche de frais en VA (valider)
@@ -312,13 +319,10 @@ class PdoGsb
 	 * @param $moisFicheFrais 
 	 * @param $idVisiteur
 	 */
-	public function validerFicheFrais($moisFicheFrais, $idVisiteur, $montantValide)
+	public function validerFicheFrais($idVisiteur, $moisFicheFrais, $montantValide)
 	{
-
 		$req = "update fichefrais set idEtat = 'VA', montantValide=" . $montantValide . ", dateModif=now() where idVisiteur = '" . $idVisiteur . "' and mois = '" . $moisFicheFrais . "';";
-		echo $req;
 		PdoGsb::$monPdo->exec($req);
-		header("Location: index.php?uc=validerFrais&action=choixVisiteurMois");
 	}
 	/**
 	 * Retourne les mois pour lesquel un visiteur a une fiche de frais

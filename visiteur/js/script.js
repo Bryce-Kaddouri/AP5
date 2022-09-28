@@ -2,45 +2,45 @@
 
 $(document).ready(function () {
 
-   // début gestion de la sidebar
-   $('#btn-menuSVG').on('click', function () {
-    // verification si #sidebar est possede la classe largeSidebar
-    // Si vrai Alors on la retire et on ajoute la classe smallSidebar ainsi que cacher .infoUser et reduire la taille de #sidebar a 80px
-    if ($('#sidebar').hasClass('largeSidebar')) {
-        $('#sidebar').removeClass('largeSidebar');
-        $('#sidebar').addClass('smallSidebar');
-        $('#btn-menu').removeClass('mr-5');
-        $('#btn-menu').addClass('mr-auto');
-        $('#btn-menu').addClass('ml-auto');
-        $('.infoUser').hide();
-        $('#sidebar').animate({
-            width: '80px'
-        });
-        // rotation du bouton
-        $('#btn-menuSVG').css({
-            'transform': 'rotate(180deg)',
-            'transition': 'transform 0.8s'
-        });
+    // début gestion de la sidebar
+    $('#btn-menuSVG').on('click', function () {
+        // verification si #sidebar est possede la classe largeSidebar
+        // Si vrai Alors on la retire et on ajoute la classe smallSidebar ainsi que cacher .infoUser et reduire la taille de #sidebar a 80px
+        if ($('#sidebar').hasClass('largeSidebar')) {
+            $('#sidebar').removeClass('largeSidebar');
+            $('#sidebar').addClass('smallSidebar');
+            $('#btn-menu').removeClass('mr-5');
+            $('#btn-menu').addClass('mr-auto');
+            $('#btn-menu').addClass('ml-auto');
+            $('.infoUser').hide();
+            $('#sidebar').animate({
+                width: '80px'
+            });
+            // rotation du bouton
+            $('#btn-menuSVG').css({
+                'transform': 'rotate(180deg)',
+                'transition': 'transform 0.8s'
+            });
 
-    } else {
-        // Sinon on retire la classe smallSidebar et on ajoute la classe largeSidebar ainsi que afficher .infoUser et agrandir la taille de #sidebar a 250px
-        $('#sidebar').removeClass('smallSidebar');
-        $('#sidebar').addClass('largeSidebar');
-        $('.infoUser').show();
-        $('#sidebar').animate({
-            width: '250px'
-        });
-        $('#btn-menu').removeClass('mr-auto');
-        $('#btn-menu').addClass('mr-5');
-        $('#btn-menu').addClass('ml-auto');
-        // rotation du bouton
-        $('#btn-menuSVG').css({
-            'transform': 'rotate(0deg)',
-            'transition': 'transform 0.8s'
-        });
-    }
-});
-// fin de gestion de la sidebar 
+        } else {
+            // Sinon on retire la classe smallSidebar et on ajoute la classe largeSidebar ainsi que afficher .infoUser et agrandir la taille de #sidebar a 250px
+            $('#sidebar').removeClass('smallSidebar');
+            $('#sidebar').addClass('largeSidebar');
+            $('.infoUser').show();
+            $('#sidebar').animate({
+                width: '250px'
+            });
+            $('#btn-menu').removeClass('mr-auto');
+            $('#btn-menu').addClass('mr-5');
+            $('#btn-menu').addClass('ml-auto');
+            // rotation du bouton
+            $('#btn-menuSVG').css({
+                'transform': 'rotate(0deg)',
+                'transition': 'transform 0.8s'
+            });
+        }
+    });
+    // fin de gestion de la sidebar 
 
     // toogleclass sur le bouton supprimer ligne qui permet d'afficher les petiti rond rouge pour supprimer une ligne
     $('#supprimerLigne').on('click', function () {
@@ -114,4 +114,18 @@ $(document).ready(function () {
     // affichge la variable titre dans le h1 de v_entete
     $('#titrePage').text(titre);
 
-})
+
+
+    // fonction pour fermer le pop up d'affichage des erreurs avec une class toogle
+    // verif regex number 
+    $regex = /^[0-9]+$/;
+
+    $('.delete').on('click', function () {
+        let numNotif = $(this).attr('dt-numNotif');
+        $('.notification.numNotif' + numNotif).remove();
+    });
+
+
+});
+
+
