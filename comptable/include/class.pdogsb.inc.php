@@ -539,4 +539,23 @@ class PdoGsb
 		$totalFraisForfait = $res->fetch();
 		return $totalFraisForfait;
 	}
+
+	/**
+	 * Retourne le montant total pour les frais hors forfait d'un visiteur pour un mois 
+	 * donné concernés par les deux arguments
+ 
+	 * @param $idVisiteur 
+	 * @param $mois sous la forme aaaamm
+	 * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
+	 */
+	public function reporterFraisHF($idVisiteur, $mois)
+	{
+		$numAnnee = substr($mois, 0, 4);
+		$numMois = substr($mois, 4, 2);
+		$numMoisSuivant = $numMois + 1;
+		$req = "UPDATE `lignefraishorsforfait` SET `mois`='[value-3]',`date`='[value-5]' where idVisiteur='" . $idVisiteur . "' and mois='" . $numAnnee . $numMoisSuivant . "' ";
+		$res = PdoGsb::$monPdo->query($req);
+		$totalFraisForfait = $res->fetch();
+		return $totalFraisForfait;
+	}
 }
