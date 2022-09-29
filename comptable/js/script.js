@@ -126,7 +126,7 @@ $(document).ready(function () {
         }
         // si 
         Swal.fire({
-            title: 'Choisir une action ' + idEtat,
+            title: 'Choisir une action ',
             text: "Vous allez modifier ce frais ! ",
             icon: 'warning',
             showCancelButton: true,

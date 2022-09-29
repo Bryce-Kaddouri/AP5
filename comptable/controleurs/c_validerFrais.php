@@ -52,7 +52,7 @@ switch ($action) {
                     } else {
                         ajouterErreur("Pas de fiche de frais pour ce visiteur ce mois");
                         include("vues/v_erreurs.php");
-                        include("vues/v_listeMoisVisiteur.php");
+                        // include("vues/v_listeMoisVisiteur.php");
                     }
                     break;
                 }
@@ -64,13 +64,13 @@ switch ($action) {
     case 'validerFicheFrais': {
             $lemoisFiche = $_GET['moisFiche'];
             $levisiteurFiche = $_GET['idVisiteur'];
-            echo "<script>alert('" . $levisiteurFiche . " " . $lemoisFiche . "')</script>";
             $totalFraisForfait = $pdo->getTotalFraisForfait($levisiteurFiche, $lemoisFiche);
             $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfaitVA($levisiteurFiche, $lemoisFiche);
             $montantValide = $totalFraisForfait['totalFraisForfait'] + $totalFraisHorsForfait['totalFraisHorsForfait'];
-            echo "<script>console.log('" . $montantValide . "')</script>";
             $validation = $pdo->validerFicheFrais($levisiteurFiche, $lemoisFiche, $montantValide);
-            header("Location: index.php?uc=validerFrais&action=choixVisiteurMois");
+
+
+            // header("Location: index.php?uc=validerFrais&action=choixVisiteurMois");
         }
     case 'majFrais': {
             $idEtat = $_GET['idEtat'];

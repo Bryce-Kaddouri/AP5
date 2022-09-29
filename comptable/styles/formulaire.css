@@ -1,0 +1,60 @@
+#box1 {
+    background-color: rgb(58, 58, 92);
+    height: 150px;
+    position: relative;
+    top: 0.5rem;
+    border-radius: 8px;
+    width: 260px;
+    padding-left: 1rem;
+    padding-top: 0.7rem;
+
+}
+
+@keyframes anime {
+
+    from {
+
+        transform: translateY(100px);
+    }
+
+
+}
+
+#nombre {
+
+    position: relative;
+    bottom: 1rem;
+}
+
+#lenght {
+
+    position: relative;
+    bottom: 2rem;
+}
+
+.invalid {
+
+    color: rgb(230, 74, 74);
+}
+
+.invalid:before {
+
+    position: relative;
+    left: -0.1px;
+    color: rgb(230, 74, 74);
+    content: "✘ ";
+
+}
+
+.valid {
+
+    color: rgb(90, 192, 79);
+}
+
+.valid::before {
+    position: relative;
+    left: -1px;
+    color: rgb(90, 192, 79);
+    content: "✔ ";
+}
+

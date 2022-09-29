@@ -1,4 +1,4 @@
-<div class="w-auto ml-auto mr-5">
+<div class="w-auto ml-auto mr-5 mt-2 pb-3">
 	<div class="w-1/2 mr-0 ml-auto">
 		<?php
 		$i = 1;

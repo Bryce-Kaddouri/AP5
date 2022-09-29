@@ -13,6 +13,8 @@
   <!---->
   <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+  <link rel="stylesheet" href="styles/formulaire.css">
+
 </head>
 
 <body class="m-0 p-0">

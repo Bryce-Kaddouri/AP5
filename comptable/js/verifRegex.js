@@ -44,6 +44,83 @@ $(document).ready(function () {
     );
 
 
+    var myInput = document.getElementById('mdp'); 	//stocker le input mdp dans une variable
+    var letter = document.getElementById('lettre');  //Stocker le texte lettre dans une variable
+    var capital = document.getElementById('capital');  //Stocker le texte capital dans une variable
+    var nombre = document.getElementById('nombre');  //Stocker le texte nombre dans une variable
+    var length = document.getElementById('lenght'); //Stocker le texte length dans une variable
+
+
+
+    myInput.onfocus = function () {
+
+        document.getElementById("box1").style.display = "block"
+
+
+    }
+
+
+    myInput.onblur = function () {
+
+        document.getElementById('box1').style.display = "none"
+
+    }
+
+    myInput.onkeyup = function () {
+
+        var lowerCase = /[a-z]/g
+
+        if (myInput.value.match(lowerCase)) {
+
+            letter.classList.remove('invalid');
+            letter.classList.add('valid');
+
+        } else {
+            letter.classList.remove('valid');
+            letter.classList.add('invalid');
+        }
+
+        var upperCase = /[A-Z]/g
+
+        if (myInput.value.match(upperCase)) {
+            capital.classList.remove('invalid');
+            capital.classList.add('valid');
+
+        } else {
+
+            capital.classList.remove('valid');
+            capital.classList.add('invalid');
+        }
+
+        var nombres = /[0-9]/g
+
+        if (myInput.value.match(nombres)) {
+            nombre.classList.remove('invalid');
+            nombre.classList.add('valid');
+
+
+        } else {
+
+            nombre.classList.remove('valid');
+            nombre.classList.add('invalid');
+        }
+
+        if (myInput.value.length >= 8) {
+
+            length.classList.remove('invalid');
+            length.classList.add('valid');
+
+        } else {
+
+            length.classList.remove('valid');
+            length.classList.add('invalid');
+
+        }
+
+
+    }
+
+
 });
 
     // faire une action a chaque changement lors de la saisie de valeur de l'input avec class login

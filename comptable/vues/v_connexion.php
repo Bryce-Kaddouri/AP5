@@ -15,14 +15,23 @@
                         <label class="block d-block" for="mdp">Mot de passe*</label>
                         <input class="block d-block border-solid border-2 border-grey-900 rounded" id="mdp" type="password" name="mdp" size="30" maxlength="45">
                         <div id="infoMDP" class="bg-blue-800">
-                              <div class=" bg-red-800 w-full flex d-flex align-middle" id="info1maj">
-                                    <p>au moins 1 majuscule</p><img class=" h-10 w-10" src="../images/check.gif" alt="">
-                              </div>
-                              <div class="h-10 flex d-flex">
-                                    <p class="align-middle bg-white">compris entre 8 et 20 caractéres</p>
-                              </div>
-                              <div class="h-10 flex d-flex">
-                                    <p>pas de caractéres spéciaux</p>
+
+                              <div id="box1" class="w-1/2">
+
+                                    <div class=" w-full flex d-flex align-middle" id="info1maj">
+                                          <p id="lettre" class="invalid">Une lettre minuscule</p>
+                                    </div>
+                                    <div class="h-10 flex d-flex">
+                                          <p id="capital" class="invalid">Une lettre majuscule</p>
+                                    </div>
+                                    <div class="h-10 flex d-flex">
+                                          <p id="nombre" class="invalid">Un chiffre</p>
+                                    </div>
+
+                                    <div class="h-10 flex d-flex">
+                                          <p id="lenght" class="invalid">8 caractères</p>
+                                    </div>
+
                               </div>
 
                         </div>
@@ -33,7 +42,7 @@
                         <!-- <input type="reset" value="Annuler" name="annuler"> -->
                   </div>
                   <div class="w-full pb-5 text-center" style="background-color: #283044;">
-                        <a id="retour-position" href="../index.html" class="text-white hover:text-blue-400">Retourner à la page d'accueil</a> 
+                        <a id="retour-position" href="../index.html" class="text-white hover:text-blue-400">Retourner à la page d'accueil</a>
                   </div>
 
 

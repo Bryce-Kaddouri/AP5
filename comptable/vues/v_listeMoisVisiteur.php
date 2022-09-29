@@ -18,9 +18,6 @@
                   echo "<option value=" . $id . ">" . $nom . " " . $prenom . " </option>";
                 }
                 ?>
-
-
-
              </select>
            </div>
            <div class="w-1/2 mt-5 mb-5">
@@ -51,14 +48,6 @@
                 foreach ($lesMois as $unMois => $libelle) {
                   echo "<option value=" . $anneeActuel . $unMois . ">" . $libelle . " " . $anneeActuel . " </option>";
                 }
-
-                // foreach ($lesMois as $unMois) {
-                //   $numMois = substr($unMois, 4, 2);
-                //   $mois = $unMois['unMois'];
-
-
-                //   echo "<option value='" . $mois . "'>" . $numMois . "</option>";
-                // }
                 ?>
              </select>
            </div>
