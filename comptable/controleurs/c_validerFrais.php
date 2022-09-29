@@ -39,7 +39,7 @@ switch ($action) {
                     $leMois = $_REQUEST['lstMois'];
                     $leVisiteur = $_REQUEST['lstVisiteur'];
                     $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
-                    $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+                    $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois, 'CL');
                     if (is_array($infosFiche)) {
                         $numMois = substr($infosFiche['mois'], 4, 2);
                         $numAnnee = substr($infosFiche['mois'], 0, 4);
@@ -90,7 +90,7 @@ switch ($action) {
             $leMois = $moisFiche;
             $leVisiteur = $idVisiteur;
             $lesinfosVisiteur = $pdo->getLesInfosVisiteur($leVisiteur);
-            $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+            $infosFiche = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois, 'CL');
 
 
             if (is_array($infosFiche)) {

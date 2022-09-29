@@ -12,6 +12,8 @@ $numMois = substr($mois, 4, 2);
 switch ($action) {
 	case 'saisirFrais': {
 			if ($pdo->estPremierFraisMois($idVisiteur, $mois)) {
+				// revoir cette partie !!!!!!
+				$pdo->majEtatFicheFrais($idVisiteur, $mois, 'CL');
 				$pdo->creeNouvellesLignesFrais($idVisiteur, $mois);
 			}
 			break;

@@ -395,7 +395,7 @@ class PdoGsb
 	 * @param $mois sous la forme aaaamm
 	 * @return un tableau avec des champs de jointure entre une fiche de frais et la ligne d'état 
 	 */
-	public function getLesInfosFicheFrais($idVisiteur, $mois)
+	public function getLesInfosFicheFrais($idVisiteur, $mois, $etat)
 	{
 		$req = "select ficheFrais.idEtat as idEtat,
 		ficheFrais.dateModif as dateModif, 
@@ -408,7 +408,7 @@ class PdoGsb
 		inner join Etat 
 		on ficheFrais.idEtat = Etat.id
 		where fichefrais.idVisiteur ='$idVisiteur'
-		and idEtat='CR' 
+		and idEtat='$etat' 
 		and fichefrais.mois = '$mois';";
 		$res = PdoGsb::$monPdo->query($req);
 		$laLigne = $res->fetch();
@@ -449,15 +449,15 @@ class PdoGsb
 	 * @param $mois sous la forme aaaamm
 	 * @return un tableau avec des champs de jointure entre une fiche de frais et la ligne d'état 
 	 */
-	public function getLesFichesValidees($idVisiteur, $annee, $mois)
+	public function getLesFichesValidees($idVisiteur, $anneeMois)
 	{
 
 		$condition = '';
 		if (!empty($idVisiteur)) {
 			$condition .= " and fichefrais.idVisiteur = '$idVisiteur'";
 		}
-		if (!empty($annee . $mois)) {
-			$condition .= " and fichefrais.mois = '$annee$mois'";
+		if (!empty($anneeMois)) {
+			$condition .= " and fichefrais.mois = '$anneeMois'";
 		}
 
 		$req = "select fichefrais.idVisiteur as idVisiteur,
