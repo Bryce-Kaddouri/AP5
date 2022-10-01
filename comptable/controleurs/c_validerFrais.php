@@ -64,13 +64,23 @@ switch ($action) {
     case 'validerFicheFrais': {
             $lemoisFiche = $_GET['moisFiche'];
             $levisiteurFiche = $_GET['idVisiteur'];
+            // verif si fiche mois suivant existe deja si c'est pas le cas (==0) alors on la cree et on met a jour le mois du frais hors forfait
+            // sinon juste mise a jour du mois du frais 
+            $nbFicheMoisSuivant = $pdo->getNbFicheFrais($levisiteurFiche, $lemoisFiche);
+            if ($nbFicheMoisSuivant == 0) {
+                $pdo->creeNouvellesLignesFrais($levisiteurFiche, $lemoisFiche);
+            }
+            // validation de la fiche de frais avec recuperation du montant total des frais forfait + montant total frais HF numEtat=1
             $totalFraisForfait = $pdo->getTotalFraisForfait($levisiteurFiche, $lemoisFiche);
             $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfaitVA($levisiteurFiche, $lemoisFiche);
             $montantValide = $totalFraisForfait['totalFraisForfait'] + $totalFraisHorsForfait['totalFraisHorsForfait'];
-            $validation = $pdo->validerFicheFrais($levisiteurFiche, $lemoisFiche, $montantValide);
-
-
-            // header("Location: index.php?uc=validerFrais&action=choixVisiteurMois");
+            $pdo->validerFicheFrais($levisiteurFiche, $lemoisFiche, $montantValide);
+            $pdo->reporterFraisHF($levisiteurFiche, $lemoisFiche);
+            // affichage de la liste des mois et visiteurs
+            $lesVisiteurs = $pdo->afficherListeVisiteur();
+            $lesMois = $pdo->afficherLesMois();
+            include("vues/v_listeMoisVisiteur.php");
+            break;
         }
     case 'majFrais': {
             $idEtat = $_GET['idEtat'];
@@ -104,5 +114,5 @@ switch ($action) {
                 $totalFraisHorsForfait = $pdo->getTotalFraisHorsForfait($leVisiteur, $leMois);
                 include("vues/v_ficheEtat.php");
             }
-        }
+        };
 }

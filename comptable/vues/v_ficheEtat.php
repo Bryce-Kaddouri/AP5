@@ -129,7 +129,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisForfait['totalFraisForfait']; ?> EUR</td>
+                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait'] ?> EUR</td>
             </tr>
         <?php
                             }
