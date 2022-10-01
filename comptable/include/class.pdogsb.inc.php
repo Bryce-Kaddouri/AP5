@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /** 
  * Classe d'accès aux données. 
@@ -546,7 +546,6 @@ class PdoGsb
  
 	 * @param $idVisiteur 
 	 * @param $mois sous la forme aaaamm
-	 * @return l'id, le libelle et la quantité sous la forme d'un tableau associatif 
 	 */
 	public function reporterFraisHF($idVisiteur, $mois)
 	{
