@@ -123,10 +123,4 @@ $(document).ready(function () {
 
 });
 
-    // faire une action a chaque changement lors de la saisie de valeur de l'input avec class login
-
-
-
-
-    // verif regex pour le login et change la couleur du champ en fonction du regex
 
