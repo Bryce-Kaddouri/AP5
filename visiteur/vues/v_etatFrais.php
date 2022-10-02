@@ -5,7 +5,7 @@
   <div class="mr-2 ml-2 mb-8">
     <p class="mt-10">
       <span class="font-semibold text-xl underline mr-3">État : </span><?php echo $libEtat ?> depuis le <?php echo $dateModif ?> <br>
-      <span class="font-semibold text-xl underline mr-3">Montant validé :</span> <?php echo $montantValide ?> (e)
+      <span class="font-semibold text-xl underline mr-3">Montant validé :</span> <?php echo $montantValide ?> EUR
 
 
     </p>
@@ -69,14 +69,27 @@
       <?php
       }
       ?>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="border-solid border-2 pb-2 pt-2 border-black text-2xl text-center font-semibold ">
-          <p class="text-red-600"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait'] ?> EUR</p>
-        </td>
-      </tr>
+      <!-- affiche aucun frais hors forfait si pas frais hors forfait-->
+      <?php
+      if (count($lesFraisHorsForfait) == 0) {
+      ?>
+        <tr>
+          <td class="border-solid border-2 border-black text-xl text-center" colspan="4">Aucun frais hors forfait</td>
+        </tr>
+      <?php
+      } else {
+      ?>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="border-solid border-2 pb-2 pt-2 border-black text-2xl text-center font-semibold ">
+            <p class="text-red-600"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait'] ?> EUR</p>
+          </td>
+        </tr>
+      <?php
+      }
+      ?>
     </table>
   </div>
 </div>

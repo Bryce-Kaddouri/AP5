@@ -43,8 +43,8 @@ switch ($action) {
 				include("vues/v_erreurs.php");
 			}
 			// verif libelle
-			// seule les majuscule et minuscule sont accepté les chiffres et les caractères spéciaux ne sont pas accepté
-			if (!empty($_REQUEST['libelle']) && preg_match("/^[a-zA-Z]+$/", $_REQUEST['libelle'])) {
+			// seule les majuscule, les minuscule, les espaces et les chiffres sont accepté les caractères spéciaux ne sont pas accepté
+			if (!empty($_REQUEST['libelle']) && preg_match("/^[a-zA-Z0-9 ]+$/", $_REQUEST['libelle'])) {
 				$libelle = $_REQUEST['libelle'];
 			} else {
 				ajouterErreur("Le format du libelle n'est pas valide");
@@ -52,7 +52,7 @@ switch ($action) {
 			}
 			//verif justificatif
 			// verifit si boolean 
-			if (!empty($_REQUEST['justificatif']) && preg_match("/[0-1]/", $_REQUEST['justificatif'])) {
+			if (preg_match("/[0-1]/", $_REQUEST['justificatif'])) {
 				$justificatif = $_REQUEST['justificatif'];
 			} else {
 				ajouterErreur("Le format du justificatif n'est pas valide ou non renseigné");
