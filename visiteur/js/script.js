@@ -117,8 +117,6 @@ $(document).ready(function () {
 
 
     // fonction pour fermer le pop up d'affichage des erreurs avec une class toogle
-    // verif regex number 
-    $regex = /^[0-9]+$/;
 
     $('.delete').on('click', function () {
         let numNotif = $(this).attr('dt-numNotif');
