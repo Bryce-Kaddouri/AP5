@@ -338,4 +338,19 @@ class PdoGsb
 		$totalFraisForfait = $res->fetch();
 		return $totalFraisForfait;
 	}
+
+	/**
+	 * Modifie l'état et la date de modification d'une fiche de frais
+ 
+	 * Modifie le champ idEtat et met la date de modif à aujourd'hui
+	 * @param $idVisiteur 
+	 * @param $mois sous la forme aaaamm
+	 */
+
+	// public function majEtatFicheFrais($idVisiteur, $mois, $etat)
+	// {
+	// 	$req = "update ficheFrais set idEtat = '$etat', dateModif = now() 
+	// 	where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
+	// 	PdoGsb::$monPdo->exec($req);
+	// }
 }

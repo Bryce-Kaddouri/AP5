@@ -3,7 +3,7 @@
 
             <form class="bg-white m-16 w-4/6 h-auto mr-2/6 ml-1/6 rounded-lg shadow-lg" method="POST" action="index.php?uc=connexion&action=valideConnexion">
                   <div class="m-10 h-20 bg-white text-center">
-                        <h2 class="text-black text-center pt-10 font-semibold text-xl">Identification utilisateur</h2>
+                        <h2 class="text-black text-center pt-10 font-semibold text-xl">Identification Visiteur</h2>
 
                   </div>
                   <div class=" h-20 ml-14 mr-10 bg-white ">
@@ -16,12 +16,12 @@
                         <input class="block d-block border-solid border-2 border-grey-900 rounded" id="mdp" type="password" name="mdp" size="30" maxlength="45">
                   </div>
 
-                  <div class=" h-20 ml-10 mr-10 bg-white mr-auto ml-auto text-center ">
+                  <div class=" h-20  bg-white mr-auto ml-auto text-center ">
                         <input class="pl-5 pr-5 pb-2 pt-2 bg-blue-600 rounded font-semibold text-white cursor-pointer hover:bg-blue-400" type="submit" value="Connexion" name="valider">
                         <!-- <input type="reset" value="Annuler" name="annuler"> -->
                   </div>
                   <div class="w-full pb-5 text-center" style="background-color: #283044;">
-                        <a id="retour-position" href="../index.html" class="text-white hover:text-blue-400">Retourner à la page d'accueil</a> 
+                        <a id="retour-position" href="../index.html" class="text-white hover:text-blue-400">Retourner à la page d'accueil</a>
                   </div>
 
 

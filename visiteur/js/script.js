@@ -1,6 +1,15 @@
 // ce document gere la side bar , et les boutons pour valider une fiche de frais, la mettre en attente et supprimer une ligne hors forfait
 
 $(document).ready(function () {
+    // fonction pour afficher changer le background color de l
+    $('#sidebar .sideBarItem').on('mouseover', function () {
+        //supprimer le background color de l'element precedent
+        $(this).css('background-color', '#3c8dbc');
+    });
+    // fonction pour supprimer le background color de l'element
+    $('#sidebar .sideBarItem').on('mouseout', function () {
+        $('#sidebar .sideBarItem').css('background-color', 'transparent');
+    });
 
     // début gestion de la sidebar
     $('#btn-menuSVG').on('click', function () {
@@ -117,8 +126,6 @@ $(document).ready(function () {
 
 
     // fonction pour fermer le pop up d'affichage des erreurs avec une class toogle
-    // verif regex number 
-    $regex = /^[0-9]+$/;
 
     $('.delete').on('click', function () {
         let numNotif = $(this).attr('dt-numNotif');

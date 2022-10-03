@@ -116,7 +116,7 @@
                 <td class=" w-1/5 border-solid border-2 border-black bg-white"><?php echo $infoHF['date'] ?></td>
                 <td class="w-1/5 border-solid border-2 border-black bg-white"><?php echo $infoHF['libelle'] ?></td>
                 <td class="w-1/5 border-solid border-2 border-black bg-white"><?php echo $infoHF['libEtat'] ?></td>
-                <td class="w-1/5 border-solid border-2 border-black bg-white"><?php $justificatifString ?></td>
+                <td class="w-1/5 border-solid border-2 border-black bg-white"><?php echo $justificatifString ?></td>
                 <td class="w-1/5 border-solid border-2 border-black bg-white"><?php echo $infoHF['montant'] ?> EUR</td>
 
                 </tr>
@@ -129,7 +129,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisForfait['totalFraisForfait']; ?> EUR</td>
+                <td class="border-solid border-2 border-black bg-white"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait'] ?> EUR</td>
             </tr>
         <?php
                             }

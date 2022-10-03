@@ -8,6 +8,8 @@
   </tr>
 
   <?php
+
+
   foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
     $libelle = $unFraisHorsForfait['libelle'];
     $date = $unFraisHorsForfait['date'];
@@ -26,12 +28,19 @@
 
   }
   ?>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td class="border-solid border-2 border-black-900 pl-5 h-8 pb-2 pt-2 font-bold"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait']; ?> EUR</td>
-  </tr>
+  <?php if (count($lesFraisHorsForfait) == 0) { ?>
+    <tr class="ml-2">
+      <td colspan="4" class="text-center border-solid border-2 border-black-900 pl-5 h-8 pb-2 pt-2 font-bold">Aucun frais hors forfait</td>
+    </tr>
+  <?php } else { ?>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="border-solid border-2 border-black-900 pl-5 h-8 pb-2 pt-2 font-bold"><?php echo $totalFraisHorsForfait['totalFraisHorsForfait']; ?> EUR</td>
+    </tr>
+
+  <?php } ?>
 
 </table>
 <div class="mt-8">

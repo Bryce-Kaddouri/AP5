@@ -1,5 +1,9 @@
 .bg-nav {
-  background-color: #283044;
+  background-color: #1F4E7A;
+  /*283044*/
+  /*77AADD*/
+  /*4E81B6*/
+  /*1F4E7A*/
 
   position: absolute;
   position: fixed;
@@ -39,7 +43,7 @@
   color: #4E81B6
 }
 
-#retour-position{
+#retour-position {
   position: relative;
   top: 8px;
 }
