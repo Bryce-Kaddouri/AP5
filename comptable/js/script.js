@@ -234,6 +234,53 @@ $(document).ready(function () {
         $('.notification.numNotif' + numNotif).remove();
     });
 
+
+    // fonction qui affiche un modale pour confirmer le changement de statut de la fiche de frais validée en remboursée
+    $('.btn-editFicheVA').on('click', function () {
+        var idVisiteur = $(this).attr('dt-idVisiteur');
+        var moisFiche = $(this).attr('dt-moisFiche');
+        swal.fire({
+            title: 'Confirmer le changement de statut',
+            text: "Vous allez changer le statut de la fiche de frais de validée à remboursée ! ",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirmer',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swal.fire({
+                    title: 'Changement de statut effectué',
+                    text: "Le statut de la fiche de frais a été changé !",
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ok',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "index.php?uc=suivrePaiement&action=rembourserFicheVA&idVisiteur=" + idVisiteur + "&moisFiche=" + moisFiche;
+                    }
+                })
+            } else {
+                swal.fire({
+                    title: 'Annulé',
+                    text: "Le statut de la fiche de frais n'a pas été changé !",
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ok'
+
+                }
+                )
+            }
+        })
+
+    });
+
 });
 
 

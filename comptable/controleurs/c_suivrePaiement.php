@@ -29,4 +29,17 @@ switch ($action) {
                 }
             }
         }
+    case 'rembourserFicheVA': {
+            $lesMois = $pdo->afficherLesMois();
+            $lesVisiteurs = $pdo->afficherListeVisiteur();
+
+            include 'vues/v_listeMoisVisteurVA.php';
+
+            $idVisiteur = $_GET['idVisiteur'];
+            $moisFiche = $_GET['moisFiche'];
+
+            $pdo->majEtatFicheFrais($idVisiteur, $moisFiche, 'RB');
+
+            break;
+        }
 }
