@@ -238,7 +238,7 @@ ALTER TABLE `lignefraisforfait`
   ADD CONSTRAINT `lignefraisforfait_ibfk_2` FOREIGN KEY (`idFraisForfait`) REFERENCES `fraisforfait` (`id`);
 
 --
--- Contraintes pour la table `lignefraishorsforfait`
+-- Contraintes pour la table `lignefraishorsforfaittttttt`
 --
 ALTER TABLE `lignefraishorsforfait`
   ADD CONSTRAINT `lignefraishorsforfait_ibfk_1` FOREIGN KEY (`idVisiteur`,`mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`);
